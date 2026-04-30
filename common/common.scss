@@ -1,0 +1,70 @@
+// ── ClubJapo Header ──────────────────────────────────────────────
+
+.d-header {
+  height: 160px !important;
+  background: #0a0a0a !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(20px) !important;
+  box-shadow: none !important;
+}
+
+.d-header .wrap {
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.d-header .header-title {
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+// Logo
+.logo-wrapper,
+.logo-wrapper a,
+.logo-wrapper img,
+#site-logo,
+.d-header .title img,
+.d-header .header-title {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+#site-logo {
+  height: 112px !important;
+  width: 112px !important;
+  max-height: none !important;
+  object-fit: contain !important;
+}
+
+// ── Navigation links ──────────────────────────────────────────────
+
+.d-header a,
+.d-header-icons .icon,
+.d-header-icons .btn,
+.d-header .nav-pills > li > a {
+  color: #d1d5db !important;
+  font-weight: 500 !important;
+}
+
+.d-header a:hover,
+.d-header-icons .icon:hover,
+.d-header-icons .btn:hover {
+  color: #DC2626 !important;
+  background: transparent !important;
+}
+
+// ── Body ──────────────────────────────────────────────────────────
+
+html,
+body,
+#main-outlet-wrapper,
+.d-wrap {
+  background: #0a0a0a !important;
+}
+
+// Offset page content for taller header
+#main-outlet {
+  padding-top: 160px !important;
+}
