@@ -7,22 +7,14 @@
   box-shadow: none !important;
 }
 
-// Centra verticalmente todo el contenido del header
-.d-header .wrap,
-.d-header .contents,
-.d-header__content {
+// Contenedor principal — centrado vertical
+.d-header .wrap {
   height: 100% !important;
-  display: flex !important;
-  align-items: center !important;
 }
 
-.d-header .header-title,
-.d-header .title,
-.d-header .panel,
-.d-header .d-header-icons {
-  align-self: center !important;
-  margin-top: auto !important;
-  margin-bottom: auto !important;
+.d-header .contents {
+  height: 100% !important;
+  align-items: center !important;
 }
 
 // Logo sin fondo
@@ -41,53 +33,50 @@
   object-fit: contain !important;
 }
 
-// ── Alineación vertical derecha ───────────────────────────────────
+// ── Nav links (before-header-panel-outlet > ul.custom-header-links) ──
 
-.d-header .panel {
-  height: 100% !important;
+.d-header .before-header-panel-outlet {
+  align-self: center !important;
+  height: auto !important;
+}
+
+.d-header ul.custom-header-links {
   display: flex !important;
   align-items: center !important;
+  gap: 8px !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.d-header ul.custom-header-links li.headerLink a {
+  color: #d1d5db !important;
+  font-weight: 500 !important;
+  font-size: 15px !important;
+  padding: 4px 8px !important;
+  text-decoration: none !important;
+}
+
+.d-header ul.custom-header-links li.headerLink a:hover {
+  color: #DC2626 !important;
+}
+
+// ── Panel derecha (iconos) ────────────────────────────────────────
+
+.d-header .panel {
+  align-self: center !important;
 }
 
 .d-header .d-header-icons {
-  height: 100% !important;
   display: flex !important;
   align-items: center !important;
 }
 
-// Custom Header Links component
-.extra-header-links {
-  display: flex !important;
-  align-items: center !important;
-  height: 100% !important;
-}
-
-.extra-header-links .header-link a {
-  color: #d1d5db !important;
-  font-weight: 500 !important;
-}
-
-.extra-header-links .header-link a:hover {
-  color: #DC2626 !important;
-}
-
-// Fuerza visibilidad de todos los links del header
-.d-header a:not(.logo-wrapper) {
-  color: #d1d5db !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-.d-header a:not(.logo-wrapper):hover {
-  color: #DC2626 !important;
-}
-
-// Iconos SVG
-.d-header-icons svg {
+.d-header .d-header-icons svg {
   fill: #d1d5db !important;
 }
 
-.d-header-icons .icon:hover svg {
+.d-header .d-header-icons .icon:hover svg {
   fill: #DC2626 !important;
 }
 
