@@ -46,15 +46,19 @@
 }
 
 // Custom Header Links component
-.custom-header-links {
+.extra-header-links {
   display: flex !important;
   align-items: center !important;
   height: 100% !important;
 }
 
-.custom-header-links .headerLink {
-  display: flex !important;
-  align-items: center !important;
+.extra-header-links .header-link a {
+  color: #d1d5db !important;
+  font-weight: 500 !important;
+}
+
+.extra-header-links .header-link a:hover {
+  color: #DC2626 !important;
 }
 
 // Fuerza visibilidad de todos los links del header
