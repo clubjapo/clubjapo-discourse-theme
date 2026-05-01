@@ -102,8 +102,8 @@ html, body {
 .topic-list .posters,
 .category-boxes .category-box,
 .category-boxes-with-topics .category-box {
-  background-color: #111111 !important;
-  border-color: rgba(255, 255, 255, 0.08) !important;
+  background-color: #0d0d0d !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
 }
 
 .sidebar-wrapper,
@@ -118,12 +118,12 @@ html, body {
 .topic-list .topic-list-data,
 .topic-list-item,
 .topic-list-item td {
-  background-color: #0a0a0a !important;
+  background-color: #0d0d0d !important;
   border-color: rgba(255, 255, 255, 0.06) !important;
 }
 
 .topic-list tbody tr:hover td {
-  background-color: #111111 !important;
+  background-color: #141414 !important;
 }
 
 // Quita fondos grises genéricos
