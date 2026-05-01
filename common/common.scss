@@ -31,11 +31,19 @@
   object-fit: contain !important;
 }
 
-// ── Custom header links (Home, Popular, New...) ───────────────────
+// ── Alineación vertical derecha ───────────────────────────────────
 
-.d-header-icons,
-.d-header-icons .icon,
-.d-header .header-buttons {
+.d-header .panel,
+.d-header .d-header-icons,
+.d-header #custom-header-links,
+.d-header .header-buttons,
+.d-header .extra-info-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  height: 100% !important;
+}
+
+.d-header .d-header-icons .icon {
   display: flex !important;
   align-items: center !important;
 }
