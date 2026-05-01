@@ -7,24 +7,17 @@
   box-shadow: none !important;
 }
 
-.d-header .wrap {
-  height: 100% !important;
-  display: flex !important;
-  align-items: center !important;
-  max-width: 100% !important;
-  padding: 0 24px !important;
-}
-
-.d-header .header-title {
+// Centra verticalmente todo el contenido del header
+.d-header .wrap,
+.d-header .contents {
   height: 100% !important;
   display: flex !important;
   align-items: center !important;
 }
 
-// Logo — sin fondo
+// Logo sin fondo
 .logo-wrapper,
 .logo-wrapper a,
-.logo-wrapper img,
 #site-logo,
 .d-header .title img {
   background: transparent !important;
@@ -33,50 +26,38 @@
 
 #site-logo {
   height: 112px !important;
-  width: 112px !important;
+  width: auto !important;
   max-height: none !important;
   object-fit: contain !important;
 }
 
-// ── Navigation links ──────────────────────────────────────────────
+// ── Custom header links (Home, Popular, New...) ───────────────────
 
-// Links del header custom (Home, Popular, New...)
-.d-header .header-buttons a,
-.d-header .custom-header-links a,
-.extra-info-wrapper a,
-#custom-header-links a {
-  color: #d1d5db !important;
-  font-weight: 500 !important;
-  font-size: 15px !important;
+.d-header-icons,
+.d-header-icons .icon,
+.d-header .header-buttons {
+  display: flex !important;
+  align-items: center !important;
 }
 
-.d-header .header-buttons a:hover,
-.d-header .custom-header-links a:hover,
-#custom-header-links a:hover {
+// Fuerza visibilidad de todos los links del header
+.d-header a:not(.logo-wrapper) {
+  color: #d1d5db !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.d-header a:not(.logo-wrapper):hover {
   color: #DC2626 !important;
 }
 
-// Iconos de la derecha
-.d-header-icons .icon svg,
-.d-header-icons .btn svg {
+// Iconos SVG
+.d-header-icons svg {
   fill: #d1d5db !important;
-  color: #d1d5db !important;
 }
 
-.d-header-icons .icon:hover svg,
-.d-header-icons .btn:hover svg {
+.d-header-icons .icon:hover svg {
   fill: #DC2626 !important;
-  color: #DC2626 !important;
-}
-
-// ── Offset contenido ──────────────────────────────────────────────
-
-#main-outlet {
-  padding-top: 20px !important;
-}
-
-.d-header + #main-outlet-wrapper {
-  margin-top: 0 !important;
 }
 
 // ── Body ──────────────────────────────────────────────────────────
