@@ -4,7 +4,6 @@
   height: 160px !important;
   background: #0a0a0a !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-  backdrop-filter: blur(20px) !important;
   box-shadow: none !important;
 }
 
@@ -12,6 +11,8 @@
   height: 100% !important;
   display: flex !important;
   align-items: center !important;
+  max-width: 100% !important;
+  padding: 0 24px !important;
 }
 
 .d-header .header-title {
@@ -20,13 +21,12 @@
   align-items: center !important;
 }
 
-// Logo
+// Logo — sin fondo
 .logo-wrapper,
 .logo-wrapper a,
 .logo-wrapper img,
 #site-logo,
-.d-header .title img,
-.d-header .header-title {
+.d-header .title img {
   background: transparent !important;
   background-color: transparent !important;
 }
@@ -40,31 +40,47 @@
 
 // ── Navigation links ──────────────────────────────────────────────
 
-.d-header a,
-.d-header-icons .icon,
-.d-header-icons .btn,
-.d-header .nav-pills > li > a {
+// Links del header custom (Home, Popular, New...)
+.d-header .header-buttons a,
+.d-header .custom-header-links a,
+.extra-info-wrapper a,
+#custom-header-links a {
   color: #d1d5db !important;
   font-weight: 500 !important;
+  font-size: 15px !important;
 }
 
-.d-header a:hover,
-.d-header-icons .icon:hover,
-.d-header-icons .btn:hover {
+.d-header .header-buttons a:hover,
+.d-header .custom-header-links a:hover,
+#custom-header-links a:hover {
   color: #DC2626 !important;
-  background: transparent !important;
+}
+
+// Iconos de la derecha
+.d-header-icons .icon svg,
+.d-header-icons .btn svg {
+  fill: #d1d5db !important;
+  color: #d1d5db !important;
+}
+
+.d-header-icons .icon:hover svg,
+.d-header-icons .btn:hover svg {
+  fill: #DC2626 !important;
+  color: #DC2626 !important;
+}
+
+// ── Offset contenido ──────────────────────────────────────────────
+
+#main-outlet {
+  padding-top: 20px !important;
+}
+
+.d-header + #main-outlet-wrapper {
+  margin-top: 0 !important;
 }
 
 // ── Body ──────────────────────────────────────────────────────────
 
-html,
-body,
-#main-outlet-wrapper,
-.d-wrap {
-  background: #0a0a0a !important;
-}
-
-// Offset page content for taller header
-#main-outlet {
-  padding-top: 160px !important;
+html, body {
+  background-color: #0a0a0a !important;
 }
