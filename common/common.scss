@@ -92,3 +92,26 @@ body, .d-header, .topic-list, .nav-pills, .category-list {
 html, body {
   background-color: #0a0a0a !important;
 }
+
+// ── Tarjetas y contenedores grises ───────────────────────────────
+
+.latest-topic-list,
+.latest-topic-list-item,
+.category-list td,
+.category-list .latest,
+.topic-list .posters,
+.category-boxes .category-box,
+.category-boxes-with-topics .category-box {
+  background-color: #111111 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.sidebar-wrapper,
+.sidebar-container {
+  background-color: #0a0a0a !important;
+}
+
+// Quita fondos grises genéricos
+.d-wrap, #main-outlet-wrapper, .container {
+  background-color: transparent !important;
+}
