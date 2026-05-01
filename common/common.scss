@@ -33,17 +33,26 @@
 
 // ── Alineación vertical derecha ───────────────────────────────────
 
-.d-header .panel,
-.d-header .d-header-icons,
-.d-header #custom-header-links,
-.d-header .header-buttons,
-.d-header .extra-info-wrapper {
+.d-header .panel {
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.d-header .d-header-icons {
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+// Custom Header Links component
+.custom-header-links {
   display: flex !important;
   align-items: center !important;
   height: 100% !important;
 }
 
-.d-header .d-header-icons .icon {
+.custom-header-links .headerLink {
   display: flex !important;
   align-items: center !important;
 }
