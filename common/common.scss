@@ -9,10 +9,20 @@
 
 // Centra verticalmente todo el contenido del header
 .d-header .wrap,
-.d-header .contents {
+.d-header .contents,
+.d-header__content {
   height: 100% !important;
   display: flex !important;
   align-items: center !important;
+}
+
+.d-header .header-title,
+.d-header .title,
+.d-header .panel,
+.d-header .d-header-icons {
+  align-self: center !important;
+  margin-top: auto !important;
+  margin-bottom: auto !important;
 }
 
 // Logo sin fondo
