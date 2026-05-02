@@ -1,8 +1,14 @@
-// ── Fuente Rajdhani ──────────────────────────────────────────────
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap');
+// ── Fuentes ──────────────────────────────────────────────────────
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap');
 
-body, .d-header, .topic-list, .nav-pills, .category-list {
-  font-family: "Rajdhani", "Segoe UI", sans-serif !important;
+body, .topic-list, .nav-pills, .category-list,
+.topic-body, .cooked, .post-stream,
+input, textarea, select, button {
+  font-family: "Inter", "Segoe UI", sans-serif !important;
+}
+
+.d-header, .d-header ul.custom-header-links {
+  font-family: "Rajdhani", "Inter", sans-serif !important;
 }
 
 // ── ClubJapo Header ──────────────────────────────────────────────
