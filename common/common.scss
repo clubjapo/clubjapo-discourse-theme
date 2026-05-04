@@ -450,8 +450,18 @@ section.collapsed-info .primary {
 }
 
 section.collapsed-info.has-background,
+section.collapsed-info.about.has-background,
+.user-main section.has-background,
 .has-background {
   background: #141414 !important;
+  background-color: #141414 !important;
+}
+
+.collapsed-info .details,
+.collapsed-info .details .primary,
+.collapsed-info .details .secondary {
+  background: transparent !important;
+  color: #f5f5f5 !important;
 }
 
 // Barra inferior menú hamburguesa (selector real de Discourse)
