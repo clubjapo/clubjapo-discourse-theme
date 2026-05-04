@@ -380,6 +380,35 @@ a.title:not(.btn):hover {
   color: #DC2626 !important;
 }
 
+// ── Tablas admin ─────────────────────────────────────────────────
+
+.d-table,
+.d-table__body,
+.d-table__row,
+td.d-table-cell,
+.d-table-cell,
+.admin-config-area table,
+.admin-config-area tr,
+.admin-config-area td,
+.admin-config-area th {
+  background: #0d0d0d !important;
+  background-color: #0d0d0d !important;
+  color: #f5f5f5 !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+.d-table__row:hover td,
+.d-table__row:hover .d-table-cell {
+  background: #1a1a1a !important;
+}
+
+.d-table__row.has-update,
+.d-table__row.--highlighted,
+.d-table__row.is-selected {
+  background: rgba(220, 38, 38, 0.1) !important;
+  border-left: 3px solid #DC2626 !important;
+}
+
 // ── Separadores ───────────────────────────────────────────────────
 
 hr, .divider { border-color: rgba(255, 255, 255, 0.06) !important; }
