@@ -462,6 +462,23 @@ td.d-table-cell,
   border-left: 3px solid #DC2626 !important;
 }
 
+// ── Post notices (nuevo usuario, etc.) ───────────────────────────
+
+.post-notice,
+.post-notice.new-user,
+.post-notice.returning-user {
+  background: #1a1a1a !important;
+  background-color: #1a1a1a !important;
+  border-left: 3px solid #DC2626 !important;
+  color: #9ca3af !important;
+}
+
+.post-notice .post-notice-message,
+.post-notice svg {
+  color: #9ca3af !important;
+  fill: #9ca3af !important;
+}
+
 // ── Separadores ───────────────────────────────────────────────────
 
 hr, .divider { border-color: rgba(255, 255, 255, 0.06) !important; }
@@ -584,6 +601,251 @@ section.collapsed-info.about.has-background,
 .hamburger-panel [class$="footer"] {
   background: #111 !important;
   border-top: 1px solid rgba(255,255,255,0.08) !important;
+}
+
+// ── Cobertura exhaustiva de fondos claros ────────────────────────
+
+// Select-kit (dropdowns, choosers)
+.select-kit .select-kit-body,
+.select-kit .select-kit-collection,
+.select-kit .select-kit-row,
+.select-kit .select-kit-filter,
+.select-kit .select-kit-filter input,
+.select-kit-wrapper,
+.category-chooser-row,
+.tag-chooser-row {
+  background: #1a1a1a !important;
+  color: #d1d5db !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.select-kit .select-kit-row:hover,
+.select-kit .select-kit-row.is-highlighted {
+  background: #2a2a2a !important;
+}
+
+.select-kit .select-kit-row.is-selected {
+  background: rgba(220, 38, 38, 0.15) !important;
+  color: #DC2626 !important;
+}
+
+// Composer / editor
+.d-editor,
+.d-editor-container,
+.d-editor-textarea-wrapper,
+.reply-area,
+.composer-popup,
+.composer-popup-outlet,
+.wmd-controls,
+.submit-panel {
+  background: #0d0d0d !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.d-editor-input {
+  background: #141414 !important;
+  color: #f5f5f5 !important;
+}
+
+.d-editor-preview {
+  background: #0d0d0d !important;
+  color: #f5f5f5 !important;
+}
+
+// Modales
+.modal-outer,
+.modal-backdrop,
+.modal-container,
+.modal-inner-container,
+.modal-body,
+.modal-header,
+.modal-footer,
+.d-modal,
+.d-modal__container,
+.d-modal__header,
+.d-modal__body,
+.d-modal__footer {
+  background: #1a1a1a !important;
+  color: #f5f5f5 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+// Tooltips
+.tooltip,
+.d-tooltip,
+.tip,
+[data-tippy-content],
+.tippy-box {
+  background: #2a2a2a !important;
+  color: #f5f5f5 !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+// Alertas y banners del sistema
+.alert,
+.alert-info,
+.alert-success,
+.alert-warning,
+.alert-error,
+.flash-alert {
+  background: #1a1a1a !important;
+  color: #d1d5db !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+// Topic map (resumen del tema)
+.topic-map,
+.topic-map__stat,
+.topic-map section {
+  background: #141414 !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+  color: #9ca3af !important;
+}
+
+// Small actions (ej: "Tema cerrado")
+.small-action,
+.small-action .action-desc {
+  background: transparent !important;
+  color: #9ca3af !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+// Citas en posts
+.quote,
+blockquote,
+aside.quote,
+.quote .title,
+aside.quote .title {
+  background: #141414 !important;
+  border-left-color: #DC2626 !important;
+  color: #d1d5db !important;
+}
+
+// Tablas en posts
+.cooked table,
+.cooked table th,
+.cooked table td,
+.cooked table tr {
+  background: #141414 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: #f5f5f5 !important;
+}
+
+.cooked table th {
+  background: #1a1a1a !important;
+}
+
+// Código inline en posts
+.cooked code,
+.cooked pre,
+.cooked pre code {
+  background: #1a1a1a !important;
+  color: #f5f5f5 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+// Tarjeta de usuario (hover)
+.user-card,
+.card-content,
+.user-card .card-row,
+.user-card .names,
+.user-card .usercard-controls {
+  background: #1a1a1a !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: #d1d5db !important;
+}
+
+// Búsqueda
+.search-container,
+.search-advanced-options,
+.fps-result,
+.fps-result:hover,
+.search-menu-container,
+.search-menu .results {
+  background: #1a1a1a !important;
+  color: #d1d5db !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.fps-result:hover {
+  background: #2a2a2a !important;
+}
+
+// Suggested topics (temas sugeridos al final)
+.suggested-topics,
+.suggested-topics .suggested-topics-title {
+  background: transparent !important;
+  color: #9ca3af !important;
+}
+
+// Timeline del tema
+.topic-timeline .timeline-container,
+.timeline-footer-controls {
+  color: #9ca3af !important;
+}
+
+// Onscreen post highlight
+.onscreen-post.highlighted .topic-body {
+  background: rgba(220, 38, 38, 0.05) !important;
+}
+
+// Poll (encuestas)
+.poll,
+.poll-container,
+.poll-info,
+.poll-buttons {
+  background: #141414 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  color: #d1d5db !important;
+}
+
+// Emoji picker
+.emoji-picker,
+.emoji-picker .emoji-picker-emoji-area {
+  background: #1a1a1a !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+// Popup menu (más opciones en posts)
+.popup-menu,
+.widget-popup,
+.d-menu-panel {
+  background: #1a1a1a !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: #d1d5db !important;
+}
+
+.popup-menu button,
+.widget-popup .btn,
+.d-menu-panel button {
+  color: #d1d5db !important;
+}
+
+.popup-menu button:hover,
+.d-menu-panel button:hover {
+  background: #2a2a2a !important;
+  color: #DC2626 !important;
+}
+
+// Dropdowns de fecha/filtro
+.date-picker,
+.pika-single,
+.pika-table th,
+.pika-table td {
+  background: #1a1a1a !important;
+  color: #d1d5db !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+// Preferencias y formularios de admin
+.admin-controls .nav,
+.admin-controls nav,
+.admin-controls .menu-toggle,
+.form-kit__row,
+.form-kit__section,
+.form-kit__field {
+  background: transparent !important;
+  color: #d1d5db !important;
 }
 
 // ── Texto general ─────────────────────────────────────────────────
