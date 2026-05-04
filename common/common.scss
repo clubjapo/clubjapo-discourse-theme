@@ -195,3 +195,49 @@ input, textarea, select,
 hr, .divider {
   border-color: rgba(255, 255, 255, 0.06) !important;
 }
+
+// ── Menú hamburguesa y dropdowns ─────────────────────────────────
+
+.menu-panel,
+.hamburger-panel,
+.drop-down-mode .d-header-icons .panel,
+.d-header .menu-panel {
+  background: #1a1a1a !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.menu-panel .menu-links a,
+.menu-panel .widget-link,
+.menu-panel .menu-link,
+.hamburger-panel .menu-links a,
+.hamburger-panel .widget-link {
+  color: #d1d5db !important;
+}
+
+.menu-panel .menu-links a:hover,
+.menu-panel .widget-link:hover,
+.hamburger-panel .menu-links a:hover {
+  color: #DC2626 !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.menu-panel hr,
+.menu-panel .divider {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+// ── Color de texto global ─────────────────────────────────────────
+
+body, .topic-body .cooked, p, li, span,
+.topic-list .title a,
+.category-list .category-name {
+  color: #f5f5f5 !important;
+}
+
+a.title:not(.btn) {
+  color: #f5f5f5 !important;
+}
+
+a.title:not(.btn):hover {
+  color: #DC2626 !important;
+}
