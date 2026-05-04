@@ -384,7 +384,62 @@ a.title:not(.btn):hover {
 
 hr, .divider { border-color: rgba(255, 255, 255, 0.06) !important; }
 
-// ── Perfil usuario: div.primary texto invisible ──────────────────
+// ── Forzar estado activo sidebar (gana a uc-modernize-foundation-theme) ──
+
+a.active.sidebar-section-link,
+a.active.sidebar-row,
+.sidebar-section-link.active,
+.sidebar-row.active,
+li.active .sidebar-section-link,
+.sidebar-section-link-wrapper.active .sidebar-section-link {
+  background: rgba(220, 38, 38, 0.15) !important;
+  background-color: rgba(220, 38, 38, 0.15) !important;
+  color: #DC2626 !important;
+}
+
+a.active.sidebar-section-link *,
+.sidebar-row.active * {
+  color: #DC2626 !important;
+}
+
+// ── User menu (dropdown del avatar) ─────────────────────────────
+
+.user-menu.revamped,
+.user-menu.revamped.menu-panel,
+.user-menu.revamped .menu-panel {
+  background: #1a1a1a !important;
+  color: #d1d5db !important;
+}
+
+.user-menu.revamped .tabs-list .btn.active,
+.user-menu.revamped .tabs-list .btn.active .d-icon {
+  background-color: rgba(220, 38, 38, 0.15) !important;
+  color: #DC2626 !important;
+}
+
+.user-menu.revamped .tabs-list .btn {
+  color: #9ca3af !important;
+}
+
+.user-menu.revamped .top-tabs,
+.user-menu.revamped .bottom-tabs,
+.user-menu.revamped .menu-tabs-container {
+  background: #111 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.user-menu.revamped .notifications-list,
+.user-menu.revamped .panel-body-contents {
+  background: #1a1a1a !important;
+}
+
+.user-menu.revamped .item a,
+.user-menu.revamped .notification-message,
+.user-menu.revamped .title {
+  color: #d1d5db !important;
+}
+
+// ── Perfil usuario: div.primary y has-background ─────────────────
 
 .details .primary,
 .collapsed-info .primary,
@@ -392,6 +447,11 @@ hr, .divider { border-color: rgba(255, 255, 255, 0.06) !important; }
 section.collapsed-info .primary {
   color: #f5f5f5 !important;
   background: transparent !important;
+}
+
+section.collapsed-info.has-background,
+.has-background {
+  background: #141414 !important;
 }
 
 // Barra inferior menú hamburguesa (selector real de Discourse)
