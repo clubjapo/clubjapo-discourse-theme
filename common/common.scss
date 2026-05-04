@@ -380,6 +380,59 @@ a.title:not(.btn):hover {
   color: #DC2626 !important;
 }
 
+// ── Hamburger sidebar dropdown ───────────────────────────────────
+
+div.sidebar-hamburger-dropdown,
+.hamburger-dropdown-wrapper,
+.hamburger-dropdown-wrapper .menu-panel,
+.hamburger-dropdown-wrapper .panel-body,
+.hamburger-dropdown-wrapper .panel-body-contents {
+  background: #0a0a0a !important;
+  background-color: #0a0a0a !important;
+}
+
+// ── Admin content con clase .white ───────────────────────────────
+
+.boxed.white,
+.boxed.white.admin-content,
+.admin-email-logs,
+.admin-contents.admin-email-logs,
+.horizontal-scroll-sync-content,
+.horizontal-scroll-sync-container {
+  background: #0d0d0d !important;
+  background-color: #0d0d0d !important;
+}
+
+// Tabla email logs
+table.email-list,
+table.email-list thead,
+table.email-list tbody,
+table.email-list tr,
+table.email-list td,
+table.email-list th,
+tr.sent-email-item,
+tr.filters {
+  background: #0d0d0d !important;
+  background-color: #0d0d0d !important;
+  color: #d1d5db !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+tr.sent-email-item:hover td {
+  background: #1a1a1a !important;
+}
+
+// Bloques de código en admin
+code,
+pre,
+.admin-content code,
+td code {
+  background: #1a1a1a !important;
+  background-color: #1a1a1a !important;
+  color: #f5f5f5 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
 // ── Tablas admin ─────────────────────────────────────────────────
 
 .d-table,
