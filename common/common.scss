@@ -53,6 +53,26 @@ input, textarea, select {
   --love:                 #DC2626;
 
   --shadow:               rgba(0, 0, 0, 0.6);
+
+  // Escala de grises primarios — evita que primary-100 sea blanco
+  --primary-50:           #111111;
+  --primary-100:          #1a1a1a;
+  --primary-200:          #2a2a2a;
+  --primary-300:          #9ca3af;
+  --primary-400:          #9ca3af;
+  --primary-500:          #d1d5db;
+  --primary-600:          #d1d5db;
+  --primary-700:          #e5e7eb;
+  --primary-800:          #f5f5f5;
+  --primary-900:          #ffffff;
+
+  // Sidebar específico
+  --d-sidebar-active-background:  rgba(220, 38, 38, 0.15);
+  --d-sidebar-active-color:       #DC2626;
+  --d-sidebar-link-color:         #d1d5db;
+  --d-sidebar-icon-color:         #DC2626;
+  --d-sidebar-highlight-color:    #DC2626;
+  --d-sidebar-section-link-prefix-color: #DC2626;
 }
 
 // ── ClubJapo Header ──────────────────────────────────────────────
@@ -137,14 +157,61 @@ html, body,
   background: #0d0d0d !important;
 }
 
-// Sidebar admin activo — rojo en lugar de azul
+// ── Sidebar (nuevo Discourse sidebar) ────────────────────────────
+
+.sidebar-wrapper,
+.sidebar-container,
+.d-sidebar,
+.sidebar-sections,
+.sidebar-section,
+.sidebar-section-content,
+.sidebar-section-link-wrapper,
+.sidebar-section-header-wrapper,
+.admin-sidebar,
+.admin-sidebar-nav-panels,
+.admin-sidebar-nav-panels__content {
+  background: #0d0d0d !important;
+  background-color: #0d0d0d !important;
+  color: #d1d5db !important;
+}
+
+.sidebar-section-link,
+.sidebar-section-link-prefix,
+.sidebar-section-link__label,
+.sidebar-section-header__title {
+  color: #d1d5db !important;
+}
+
+// Iconos del sidebar → rojo
+.sidebar-section-link .sidebar-section-link-prefix svg,
+.sidebar-section-link svg,
+.d-sidebar svg {
+  color: #DC2626 !important;
+  fill: #DC2626 !important;
+}
+
+// Item activo → fondo oscuro rojo
+.sidebar-section-link-wrapper.active,
+.sidebar-section-link--active,
 .admin-nav .nav-stacked li.active a,
-.admin-nav .nav-stacked li a.active,
-.sidebar-section-link-wrapper.active a,
-.sidebar-section-link--active {
+.admin-nav .nav-stacked li a.active {
   background: rgba(220, 38, 38, 0.15) !important;
   color: #DC2626 !important;
   border-left: 3px solid #DC2626 !important;
+}
+
+.sidebar-section-link-wrapper.active .sidebar-section-link__label,
+.sidebar-section-link--active .sidebar-section-link__label {
+  color: #DC2626 !important;
+}
+
+// Input búsqueda del sidebar
+.sidebar-filter__input,
+.sidebar .search-input,
+.admin-sidebar input {
+  background: #1a1a1a !important;
+  color: #f5f5f5 !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
 }
 
 // ── Tarjetas y listas ─────────────────────────────────────────────
@@ -207,9 +274,22 @@ html, body,
 
 .menu-panel .panel-body-bottom,
 .menu-panel .footer,
-.glimmer-search-menu .search-menu-initial-options {
-  background: #111 !important;
+.glimmer-search-menu .search-menu-initial-options,
+.search-menu .search-menu-initial-options,
+.revamped.glimmer-search-menu,
+.search-menu-container,
+.search-menu-recent {
+  background: #1a1a1a !important;
   border-top-color: rgba(255, 255, 255, 0.08) !important;
+  color: #d1d5db !important;
+}
+
+// Fila inferior del menú (teclado/componer)
+.menu-panel .panel-footer,
+[class*="panel-body-bottom"],
+[class*="hamburger"] [class*="footer"],
+[class*="hamburger"] [class*="bottom"] {
+  background: #111 !important;
 }
 
 .menu-panel hr, .menu-panel .divider {
@@ -303,6 +383,26 @@ a.title:not(.btn):hover {
 // ── Separadores ───────────────────────────────────────────────────
 
 hr, .divider { border-color: rgba(255, 255, 255, 0.06) !important; }
+
+// ── Perfil usuario: div.primary texto invisible ──────────────────
+
+.details .primary,
+.collapsed-info .primary,
+.user-main .details .primary,
+section.collapsed-info .primary {
+  color: #f5f5f5 !important;
+  background: transparent !important;
+}
+
+// Barra inferior menú hamburguesa (selector real de Discourse)
+.hamburger-dropdown .panel-body-bottom,
+.revamped.drop-down-mode .hamburger-panel .panel-body-bottom,
+.d-header .hamburger-panel > div:last-child,
+.hamburger-panel [class$="bottom"],
+.hamburger-panel [class$="footer"] {
+  background: #111 !important;
+  border-top: 1px solid rgba(255,255,255,0.08) !important;
+}
 
 // ── Texto general ─────────────────────────────────────────────────
 
