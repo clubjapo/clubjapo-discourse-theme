@@ -479,6 +479,20 @@ td.d-table-cell,
   fill: #9ca3af !important;
 }
 
+// ── Badges de notificación (contador de respuestas nuevas) ───────
+
+.badge-notification,
+.badge-notification.clicks,
+.badge-notification.new-posts,
+.badge-notification.unread-posts,
+.topic-post-badge,
+.new-topic-badge,
+.unread-badge,
+.d-badge {
+  background: #DC2626 !important;
+  color: #fff !important;
+}
+
 // ── Separadores ───────────────────────────────────────────────────
 
 hr, .divider { border-color: rgba(255, 255, 255, 0.06) !important; }
