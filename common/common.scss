@@ -493,6 +493,27 @@ td.d-table-cell,
   color: #fff !important;
 }
 
+// ── Iconos de acción en posts (corazón, enlace, tres puntos) ────────
+
+.post-controls .actions button,
+.post-controls .actions .btn,
+.actions .like-button,
+.post-menu-area .actions .btn,
+.post-menu-area button.btn-flat,
+.actions button svg,
+.post-controls button.create,
+.actions .show-more-actions {
+  color: #DC2626 !important;
+}
+
+.post-controls .actions button svg,
+.post-controls .actions .btn svg,
+.post-menu-area button svg,
+.actions button svg {
+  fill: #DC2626 !important;
+  color: #DC2626 !important;
+}
+
 // ── Separadores ───────────────────────────────────────────────────
 
 hr, .divider { border-color: rgba(255, 255, 255, 0.06) !important; }
