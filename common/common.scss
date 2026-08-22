@@ -85,7 +85,11 @@ input, textarea, select {
 }
 
 .d-header .wrap { height: 100% !important; }
-.d-header .contents { height: 100% !important; align-items: center !important; }
+.d-header .contents {
+  height: 100% !important;
+  align-items: center !important;
+  background: transparent !important;
+}
 
 .d-header .header-title,
 .d-header .title,
