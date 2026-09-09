@@ -73,6 +73,15 @@ input, textarea, select {
   --d-sidebar-icon-color:         #DC2626;
   --d-sidebar-highlight-color:    #DC2626;
   --d-sidebar-section-link-prefix-color: #DC2626;
+
+  // Variables propias del tema "Redditish" — por defecto usa un gris
+  // azulado (#dae0e6) y bordes calculados de la paleta de colores del
+  // sitio en Discourse; los forzamos a la paleta actual de ClubJapo
+  // para que las tarjetas de temas/categorías no rompan la combinación
+  // de colores existente.
+  --redditish-bg-color:                 #f5f5f5;
+  --redditish-border-color:             rgba(0, 0, 0, 0.08);
+  --redditish-border-highlight-color:   #DC2626;
 }
 
 // ── ClubJapo Header (se mantiene oscuro) ──────────────────────────
@@ -159,6 +168,20 @@ html, body,
 .sidebar-section-wrapper {
   background-color: #ffffff !important;
   background: #ffffff !important;
+}
+
+// ── Reddit-ish: contraste tarjeta/página ──────────────────────────
+// El bloque anterior fuerza blanco en #main-outlet-wrapper para que el
+// tema Foundation se vea bien, pero eso deja las tarjetas del tema
+// "Redditish" (también blancas) sin ningún contraste contra el fondo,
+// perdiendo los bordes y el efecto "tarjeta" que tiene ese tema por
+// diseño. Detectamos su marcado propio (solo existe en ese tema) para
+// devolver un fondo de página gris claro únicamente en ese caso.
+body:has(#navigation-bar, .custom-right-sidebar, .custom-topic-layout, .custom-post-bar-contents) {
+  &, #main-outlet-wrapper, .contents, .full-width {
+    background: #ececec !important;
+    background-color: #ececec !important;
+  }
 }
 
 // ── Sidebar (nuevo Discourse sidebar) ────────────────────────────
