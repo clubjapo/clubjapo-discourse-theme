@@ -180,7 +180,10 @@ html, body,
 // diseño. Detectamos su marcado propio (solo existe en ese tema) para
 // devolver un fondo de página gris claro únicamente en ese caso.
 body:has(#navigation-bar, .custom-right-sidebar, .custom-topic-layout, .custom-post-bar-contents) {
-  &, #main-outlet-wrapper, .contents, .full-width {
+  // Nota: NO incluir aquí ".contents" ni ".full-width" — son también los
+  // nombres de clases internas del header (.d-header .contents), y con
+  // !important pisarían su fondo transparente, tapando el header negro.
+  &, #main-outlet-wrapper {
     background: #ececec !important;
     background-color: #ececec !important;
   }
