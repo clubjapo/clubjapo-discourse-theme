@@ -12,12 +12,18 @@ input, textarea, select {
 }
 
 // ── Variables Discourse — contenido claro, header oscuro ──────────
-// Sobrescribe el sistema de variables de Discourse en la raíz
-
-:root,
-.d-default,
-.light-color-scheme,
-[data-color-scheme] {
+// Sobrescribe el sistema de variables de Discourse en la raíz.
+//
+// IMPORTANTE — modo oscuro de Redditish: este bloque NO se aplica bajo
+// Redditish (detectado por su marcado propio, vía :has()). Redditish
+// tiene paletas de color reales configuradas en el admin (ClubJapo /
+// ClubJapo Oscuro), así que sus variables --primary/--secondary/etc.
+// ya vienen bien resueltas según el modo claro/oscuro del usuario; si
+// las forzáramos aquí como antes, siempre serían las claras y el
+// selector de modo oscuro dejaría de funcionar. El resto de temas
+// (Foundation, Horizon, Anuncios) no tienen esas paletas bien
+// configuradas todavía, así que siguen dependiendo de este bloque.
+:root:not(:has(#navigation-bar, .custom-right-sidebar, .custom-topic-layout, .custom-post-bar-contents)) {
   --primary:              #1a1a1a;
   --primary-very-low:     #f5f5f5;
   --primary-low:          #ececec;
@@ -65,7 +71,10 @@ input, textarea, select {
   --primary-700:          #374151;
   --primary-800:          #1f2937;
   --primary-900:          #0a0a0a;
+}
 
+// Acentos de marca (rojo) — iguales en claro y oscuro, se aplican siempre.
+:root {
   // Sidebar específico
   --d-sidebar-active-background:  rgba(220, 38, 38, 0.1);
   --d-sidebar-active-color:       #DC2626;
@@ -76,13 +85,15 @@ input, textarea, select {
 
   // Variables propias del tema "Redditish" — por defecto usa un gris
   // azulado (#dae0e6) y bordes calculados de la paleta de colores del
-  // sitio en Discourse; los forzamos a la paleta actual de ClubJapo
-  // para que las tarjetas de temas/categorías no rompan la combinación
-  // de colores existente. Necesitan !important: este componente se
-  // carga antes que el tema en la cascada, así que sin !important el
-  // :root del propio tema (cargado después) gana y pisa estos valores.
-  --redditish-bg-color:                 #f5f5f5 !important;
-  --redditish-border-color:             rgba(0, 0, 0, 0.08) !important;
+  // sitio en Discourse. Las anclamos a variables ya conscientes del
+  // modo claro/oscuro (--primary-very-low/--primary-low-mid, que
+  // vienen de la paleta de color activa) en vez de a un valor fijo,
+  // para que las tarjetas de temas/categorías cuadren con la marca en
+  // ambos modos. Necesitan !important: este componente se carga antes
+  // que el tema en la cascada, así que sin !important el :root del
+  // propio tema (cargado después) gana y pisa estos valores.
+  --redditish-bg-color:                 var(--primary-very-low) !important;
+  --redditish-border-color:             var(--primary-low-mid) !important;
   --redditish-border-highlight-color:   #DC2626 !important;
 }
 
