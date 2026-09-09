@@ -23,6 +23,10 @@ input, textarea, select {
 // selector de modo oscuro dejaría de funcionar. El resto de temas
 // (Foundation, Horizon, Anuncios) no tienen esas paletas bien
 // configuradas todavía, así que siguen dependiendo de este bloque.
+// El resto del archivo usa var(--primary)/var(--secondary)/etc. en
+// lugar de colores fijos precisamente para que, bajo Redditish, tome
+// los valores reales de la paleta activa (clara u oscura) en vez de
+// quedarse pillado en claro.
 :root:not(:has(#navigation-bar, .custom-right-sidebar, .custom-topic-layout, .custom-post-bar-contents)) {
   --primary:              #1a1a1a;
   --primary-very-low:     #f5f5f5;
@@ -97,7 +101,7 @@ input, textarea, select {
   --redditish-border-highlight-color:   #DC2626 !important;
 }
 
-// ── ClubJapo Header (se mantiene oscuro) ──────────────────────────
+// ── ClubJapo Header (se mantiene oscuro en claro y en oscuro) ──────
 
 .d-header {
   height: 160px !important;
@@ -165,7 +169,7 @@ input, textarea, select {
 .d-header .d-header-icons svg { fill: #d1d5db !important; }
 .d-header .d-header-icons .icon:hover svg { fill: #DC2626 !important; }
 
-// ── Fondo global del foro (claro) ──────────────────────────────────
+// ── Fondo global del foro ────────────────────────────────────────
 
 html, body,
 #main-outlet-wrapper, .d-wrap, .container,
@@ -179,24 +183,25 @@ html, body,
 .user-secondary-navigation,
 .user-stream, .user-stream-item,
 .sidebar-section-wrapper {
-  background-color: #ffffff !important;
-  background: #ffffff !important;
+  background-color: var(--secondary) !important;
+  background: var(--secondary) !important;
 }
 
 // ── Reddit-ish: contraste tarjeta/página ──────────────────────────
-// El bloque anterior fuerza blanco en #main-outlet-wrapper para que el
-// tema Foundation se vea bien, pero eso deja las tarjetas del tema
-// "Redditish" (también blancas) sin ningún contraste contra el fondo,
-// perdiendo los bordes y el efecto "tarjeta" que tiene ese tema por
-// diseño. Detectamos su marcado propio (solo existe en ese tema) para
-// devolver un fondo de página gris claro únicamente en ese caso.
+// El bloque anterior fuerza el fondo (var(--secondary)) en
+// #main-outlet-wrapper, pero eso deja las tarjetas del tema
+// "Redditish" (también con fondo var(--secondary)) sin ningún
+// contraste contra el fondo, perdiendo los bordes y el efecto
+// "tarjeta" que tiene ese tema por diseño. Detectamos su marcado
+// propio (solo existe en ese tema) para devolver un fondo de página
+// ligeramente distinto (var(--primary-very-low)) únicamente en ese caso.
 body:has(#navigation-bar, .custom-right-sidebar, .custom-topic-layout, .custom-post-bar-contents) {
   // Nota: NO incluir aquí ".contents" ni ".full-width" — son también los
   // nombres de clases internas del header (.d-header .contents), y con
   // !important pisarían su fondo transparente, tapando el header negro.
   &, #main-outlet-wrapper {
-    background: #ececec !important;
-    background-color: #ececec !important;
+    background: var(--primary-very-low) !important;
+    background-color: var(--primary-very-low) !important;
   }
 }
 
@@ -295,16 +300,16 @@ body.category .navigation-controls #create-topic,
 .admin-sidebar,
 .admin-sidebar-nav-panels,
 .admin-sidebar-nav-panels__content {
-  background: #ffffff !important;
-  background-color: #ffffff !important;
-  color: #374151 !important;
+  background: var(--secondary) !important;
+  background-color: var(--secondary) !important;
+  color: var(--primary-high) !important;
 }
 
 .sidebar-section-link,
 .sidebar-section-link-prefix,
 .sidebar-section-link__label,
 .sidebar-section-header__title {
-  color: #374151 !important;
+  color: var(--primary-high) !important;
 }
 
 // Iconos del sidebar → rojo
@@ -334,9 +339,9 @@ body.category .navigation-controls #create-topic,
 .sidebar-filter__input,
 .sidebar .search-input,
 .admin-sidebar input {
-  background: #f5f5f5 !important;
-  color: #1a1a1a !important;
-  border-color: rgba(0, 0, 0, 0.15) !important;
+  background: var(--primary-very-low) !important;
+  color: var(--primary) !important;
+  border-color: var(--primary-low-mid) !important;
 }
 
 // ── Tarjetas y listas ─────────────────────────────────────────────
@@ -350,13 +355,13 @@ body.category .navigation-controls #create-topic,
 .category-boxes-with-topics .category-box,
 .category-list tbody tr, .category-list-item, tr.category,
 .directory table, .directory tbody tr {
-  background-color: #ffffff !important;
-  border-color: rgba(0, 0, 0, 0.08) !important;
+  background-color: var(--secondary) !important;
+  border-color: var(--primary-low-mid) !important;
 }
 
 .topic-list tbody tr:hover td,
 .category-list tbody tr:hover td {
-  background-color: #f5f5f5 !important;
+  background-color: var(--primary-very-low) !important;
 }
 
 // ── Paneles, cajas y modales ──────────────────────────────────────
@@ -365,8 +370,8 @@ body.category .navigation-controls #create-topic,
 .user-preferences, .control-group,
 .table.grid, .d-modal .modal-body,
 .modal-inner-container {
-  background-color: #ffffff !important;
-  border-color: rgba(0, 0, 0, 0.08) !important;
+  background-color: var(--secondary) !important;
+  border-color: var(--primary-low-mid) !important;
 }
 
 // ── Menú hamburguesa ──────────────────────────────────────────────
@@ -374,14 +379,14 @@ body.category .navigation-controls #create-topic,
 .menu-panel,
 .hamburger-panel,
 .drop-down-mode .d-header-icons .panel {
-  background: #ffffff !important;
-  border-color: rgba(0, 0, 0, 0.1) !important;
-  color: #374151 !important;
+  background: var(--secondary) !important;
+  border-color: var(--primary-low-mid) !important;
+  color: var(--primary-high) !important;
 }
 
 .menu-panel *,
 .hamburger-panel * {
-  color: #374151 !important;
+  color: var(--primary-high) !important;
 }
 
 .menu-panel a:hover,
@@ -392,9 +397,9 @@ body.category .navigation-controls #create-topic,
 .menu-panel input,
 .menu-panel .search-input,
 .menu-panel .search-menu-container input {
-  background: #f5f5f5 !important;
-  color: #1a1a1a !important;
-  border-color: rgba(0, 0, 0, 0.15) !important;
+  background: var(--primary-very-low) !important;
+  color: var(--primary) !important;
+  border-color: var(--primary-low-mid) !important;
 }
 
 .menu-panel .panel-body-bottom,
@@ -404,9 +409,9 @@ body.category .navigation-controls #create-topic,
 .revamped.glimmer-search-menu,
 .search-menu-container,
 .search-menu-recent {
-  background: #ffffff !important;
-  border-top-color: rgba(0, 0, 0, 0.08) !important;
-  color: #374151 !important;
+  background: var(--secondary) !important;
+  border-top-color: var(--primary-low-mid) !important;
+  color: var(--primary-high) !important;
 }
 
 // Fila inferior del menú (teclado/componer)
@@ -414,11 +419,11 @@ body.category .navigation-controls #create-topic,
 [class*="panel-body-bottom"],
 [class*="hamburger"] [class*="footer"],
 [class*="hamburger"] [class*="bottom"] {
-  background: #f5f5f5 !important;
+  background: var(--primary-very-low) !important;
 }
 
 .menu-panel hr, .menu-panel .divider {
-  border-color: rgba(0, 0, 0, 0.08) !important;
+  border-color: var(--primary-low-mid) !important;
 }
 
 // ── Inputs y formularios ──────────────────────────────────────────
@@ -426,9 +431,9 @@ body.category .navigation-controls #create-topic,
 input, textarea, select,
 .select-kit .select-kit-header,
 .d-editor-input {
-  background-color: #ffffff !important;
-  border-color: rgba(0, 0, 0, 0.15) !important;
-  color: #1a1a1a !important;
+  background-color: var(--secondary) !important;
+  border-color: var(--primary-low-mid) !important;
+  color: var(--primary) !important;
 }
 
 // ── Botones ───────────────────────────────────────────────────────
@@ -464,7 +469,7 @@ input, textarea, select,
 
 .badge-category__name,
 .badge-wrapper .badge-category-name {
-  color: #374151 !important;
+  color: var(--primary-high) !important;
 }
 
 // ── Pestañas de navegación — azul → rojo ─────────────────────────
@@ -476,8 +481,8 @@ input, textarea, select,
 // (".navigation-container .nav-pills > li > a") que ya no existe en la
 // versión actual del sitio, así que lo replicamos aquí.
 .nav-pills > li > a {
-  color: #374151 !important;
-  background: #f5f5f5 !important;
+  color: var(--primary-high) !important;
+  background: var(--primary-very-low) !important;
 }
 
 .nav-pills > li.active > a,
@@ -508,7 +513,7 @@ a:hover { color: #b91c1c !important; }
 .fancy-title a,
 .topic-title a,
 a.title:not(.btn) {
-  color: #1a1a1a !important;
+  color: var(--primary) !important;
 }
 
 .topic-list .main-link a:hover,
@@ -524,7 +529,7 @@ a.title:not(.btn):hover {
 // red }" de arriba los pintaba enteros en rojo en vez de solo el título.
 .topic-excerpt,
 .custom-topic-layout_excerpt a {
-  color: #1a1a1a !important;
+  color: var(--primary) !important;
 }
 
 .topic-excerpt:hover,
@@ -533,7 +538,7 @@ a.title:not(.btn):hover {
 }
 
 .custom-topic-layout_meta a:not(.badge-wrapper) {
-  color: #6b7280 !important;
+  color: var(--primary-medium) !important;
 }
 
 .custom-topic-layout_meta a:not(.badge-wrapper):hover {
@@ -547,8 +552,8 @@ div.sidebar-hamburger-dropdown,
 .hamburger-dropdown-wrapper .menu-panel,
 .hamburger-dropdown-wrapper .panel-body,
 .hamburger-dropdown-wrapper .panel-body-contents {
-  background: #ffffff !important;
-  background-color: #ffffff !important;
+  background: var(--secondary) !important;
+  background-color: var(--secondary) !important;
 }
 
 // ── Admin content con clase .white ───────────────────────────────
@@ -559,8 +564,8 @@ div.sidebar-hamburger-dropdown,
 .admin-contents.admin-email-logs,
 .horizontal-scroll-sync-content,
 .horizontal-scroll-sync-container {
-  background: #ffffff !important;
-  background-color: #ffffff !important;
+  background: var(--secondary) !important;
+  background-color: var(--secondary) !important;
 }
 
 // Tabla email logs
@@ -572,14 +577,14 @@ table.email-list td,
 table.email-list th,
 tr.sent-email-item,
 tr.filters {
-  background: #ffffff !important;
-  background-color: #ffffff !important;
-  color: #374151 !important;
-  border-color: rgba(0, 0, 0, 0.08) !important;
+  background: var(--secondary) !important;
+  background-color: var(--secondary) !important;
+  color: var(--primary-high) !important;
+  border-color: var(--primary-low-mid) !important;
 }
 
 tr.sent-email-item:hover td {
-  background: #f5f5f5 !important;
+  background: var(--primary-very-low) !important;
 }
 
 // Bloques de código en admin
@@ -587,10 +592,10 @@ code,
 pre,
 .admin-content code,
 td code {
-  background: #f0f0f0 !important;
-  background-color: #f0f0f0 !important;
-  color: #1a1a1a !important;
-  border-color: rgba(0, 0, 0, 0.1) !important;
+  background: var(--primary-very-low) !important;
+  background-color: var(--primary-very-low) !important;
+  color: var(--primary) !important;
+  border-color: var(--primary-low-mid) !important;
 }
 
 // ── Tablas admin ─────────────────────────────────────────────────
@@ -604,15 +609,15 @@ td.d-table-cell,
 .admin-config-area tr,
 .admin-config-area td,
 .admin-config-area th {
-  background: #ffffff !important;
-  background-color: #ffffff !important;
-  color: #1a1a1a !important;
-  border-color: rgba(0, 0, 0, 0.08) !important;
+  background: var(--secondary) !important;
+  background-color: var(--secondary) !important;
+  color: var(--primary) !important;
+  border-color: var(--primary-low-mid) !important;
 }
 
 .d-table__row:hover td,
 .d-table__row:hover .d-table-cell {
-  background: #f5f5f5 !important;
+  background: var(--primary-very-low) !important;
 }
 
 .d-table__row.has-update,
@@ -627,16 +632,16 @@ td.d-table-cell,
 .post-notice,
 .post-notice.new-user,
 .post-notice.returning-user {
-  background: #f5f5f5 !important;
-  background-color: #f5f5f5 !important;
+  background: var(--primary-very-low) !important;
+  background-color: var(--primary-very-low) !important;
   border-left: 3px solid #DC2626 !important;
-  color: #6b7280 !important;
+  color: var(--primary-medium) !important;
 }
 
 .post-notice .post-notice-message,
 .post-notice svg {
-  color: #6b7280 !important;
-  fill: #6b7280 !important;
+  color: var(--primary-medium) !important;
+  fill: var(--primary-medium) !important;
 }
 
 // ── Badges de notificación (contador de respuestas nuevas) ───────
@@ -676,7 +681,7 @@ td.d-table-cell,
 
 // ── Separadores ───────────────────────────────────────────────────
 
-hr, .divider { border-color: rgba(0, 0, 0, 0.08) !important; }
+hr, .divider { border-color: var(--primary-low-mid) !important; }
 
 // ── Forzar estado activo sidebar (gana a uc-modernize-foundation-theme) ──
 
@@ -701,8 +706,8 @@ a.active.sidebar-section-link *,
 .user-menu.revamped,
 .user-menu.revamped.menu-panel,
 .user-menu.revamped .menu-panel {
-  background: #ffffff !important;
-  color: #374151 !important;
+  background: var(--secondary) !important;
+  color: var(--primary-high) !important;
 }
 
 .user-menu.revamped .tabs-list .btn.active,
@@ -712,25 +717,25 @@ a.active.sidebar-section-link *,
 }
 
 .user-menu.revamped .tabs-list .btn {
-  color: #6b7280 !important;
+  color: var(--primary-medium) !important;
 }
 
 .user-menu.revamped .top-tabs,
 .user-menu.revamped .bottom-tabs,
 .user-menu.revamped .menu-tabs-container {
-  background: #f5f5f5 !important;
-  border-color: rgba(0, 0, 0, 0.08) !important;
+  background: var(--primary-very-low) !important;
+  border-color: var(--primary-low-mid) !important;
 }
 
 .user-menu.revamped .notifications-list,
 .user-menu.revamped .panel-body-contents {
-  background: #ffffff !important;
+  background: var(--secondary) !important;
 }
 
 .user-menu.revamped .item a,
 .user-menu.revamped .notification-message,
 .user-menu.revamped .title {
-  color: #374151 !important;
+  color: var(--primary-high) !important;
 }
 
 // Notificaciones dentro del panel de usuario
@@ -740,7 +745,7 @@ a.active.sidebar-section-link *,
 .quick-access-panel .notification {
   background: transparent !important;
   background-color: transparent !important;
-  color: #374151 !important;
+  color: var(--primary-high) !important;
 }
 
 .quick-access-panel .notification.unread {
@@ -750,17 +755,17 @@ a.active.sidebar-section-link *,
 
 .quick-access-panel .notification:hover,
 .quick-access-panel li:hover {
-  background: rgba(0, 0, 0, 0.04) !important;
+  background: var(--primary-very-low) !important;
 }
 
 .quick-access-panel a,
 .quick-access-panel .notification-description,
 .quick-access-panel .username {
-  color: #374151 !important;
+  color: var(--primary-high) !important;
 }
 
 .quick-access-panel .notification.unread a {
-  color: #0a0a0a !important;
+  color: var(--primary-very-high) !important;
 }
 
 // ── Perfil usuario: div.primary y has-background ─────────────────
@@ -769,7 +774,7 @@ a.active.sidebar-section-link *,
 .collapsed-info .primary,
 .user-main .details .primary,
 section.collapsed-info .primary {
-  color: #1a1a1a !important;
+  color: var(--primary) !important;
   background: transparent !important;
 }
 
@@ -777,15 +782,15 @@ section.collapsed-info.has-background,
 section.collapsed-info.about.has-background,
 .user-main section.has-background,
 .has-background {
-  background: #f5f5f5 !important;
-  background-color: #f5f5f5 !important;
+  background: var(--primary-very-low) !important;
+  background-color: var(--primary-very-low) !important;
 }
 
 .collapsed-info .details,
 .collapsed-info .details .primary,
 .collapsed-info .details .secondary {
   background: transparent !important;
-  color: #1a1a1a !important;
+  color: var(--primary) !important;
 }
 
 // Barra inferior menú hamburguesa (selector real de Discourse)
@@ -794,11 +799,11 @@ section.collapsed-info.about.has-background,
 .d-header .hamburger-panel > div:last-child,
 .hamburger-panel [class$="bottom"],
 .hamburger-panel [class$="footer"] {
-  background: #f5f5f5 !important;
-  border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
+  background: var(--primary-very-low) !important;
+  border-top: 1px solid var(--primary-low-mid) !important;
 }
 
-// ── Cobertura exhaustiva del contenido claro ──────────────────────
+// ── Cobertura exhaustiva del contenido ────────────────────────────
 
 // Select-kit (dropdowns, choosers)
 .select-kit .select-kit-body,
@@ -809,14 +814,14 @@ section.collapsed-info.about.has-background,
 .select-kit-wrapper,
 .category-chooser-row,
 .tag-chooser-row {
-  background: #ffffff !important;
-  color: #374151 !important;
-  border-color: rgba(0, 0, 0, 0.1) !important;
+  background: var(--secondary) !important;
+  color: var(--primary-high) !important;
+  border-color: var(--primary-low-mid) !important;
 }
 
 .select-kit .select-kit-row:hover,
 .select-kit .select-kit-row.is-highlighted {
-  background: #f0f0f0 !important;
+  background: var(--primary-very-low) !important;
 }
 
 .select-kit .select-kit-row.is-selected {
@@ -833,18 +838,18 @@ section.collapsed-info.about.has-background,
 .composer-popup-outlet,
 .wmd-controls,
 .submit-panel {
-  background: #ffffff !important;
-  border-color: rgba(0, 0, 0, 0.1) !important;
+  background: var(--secondary) !important;
+  border-color: var(--primary-low-mid) !important;
 }
 
 .d-editor-input {
-  background: #ffffff !important;
-  color: #1a1a1a !important;
+  background: var(--secondary) !important;
+  color: var(--primary) !important;
 }
 
 .d-editor-preview {
-  background: #ffffff !important;
-  color: #1a1a1a !important;
+  background: var(--secondary) !important;
+  color: var(--primary) !important;
 }
 
 // Modales
@@ -860,12 +865,12 @@ section.collapsed-info.about.has-background,
 .d-modal__header,
 .d-modal__body,
 .d-modal__footer {
-  background: #ffffff !important;
-  color: #1a1a1a !important;
-  border-color: rgba(0, 0, 0, 0.1) !important;
+  background: var(--secondary) !important;
+  color: var(--primary) !important;
+  border-color: var(--primary-low-mid) !important;
 }
 
-// Tooltips (se mantienen oscuros para contraste, como es habitual en temas claros)
+// Tooltips (se mantienen oscuros para contraste, como es habitual)
 .tooltip,
 .d-tooltip,
 .tip,
@@ -883,26 +888,26 @@ section.collapsed-info.about.has-background,
 .alert-warning,
 .alert-error,
 .flash-alert {
-  background: #f5f5f5 !important;
-  color: #374151 !important;
-  border-color: rgba(0, 0, 0, 0.1) !important;
+  background: var(--primary-very-low) !important;
+  color: var(--primary-high) !important;
+  border-color: var(--primary-low-mid) !important;
 }
 
 // Topic map (resumen del tema)
 .topic-map,
 .topic-map__stat,
 .topic-map section {
-  background: #f5f5f5 !important;
-  border-color: rgba(0, 0, 0, 0.08) !important;
-  color: #6b7280 !important;
+  background: var(--primary-very-low) !important;
+  border-color: var(--primary-low-mid) !important;
+  color: var(--primary-medium) !important;
 }
 
 // Small actions (ej: "Tema cerrado")
 .small-action,
 .small-action .action-desc {
   background: transparent !important;
-  color: #6b7280 !important;
-  border-color: rgba(0, 0, 0, 0.08) !important;
+  color: var(--primary-medium) !important;
+  border-color: var(--primary-low-mid) !important;
 }
 
 // Citas en posts
@@ -911,9 +916,9 @@ blockquote,
 aside.quote,
 .quote .title,
 aside.quote .title {
-  background: #f5f5f5 !important;
+  background: var(--primary-very-low) !important;
   border-left-color: #DC2626 !important;
-  color: #374151 !important;
+  color: var(--primary-high) !important;
 }
 
 // Tablas en posts
@@ -921,22 +926,22 @@ aside.quote .title {
 .cooked table th,
 .cooked table td,
 .cooked table tr {
-  background: #ffffff !important;
-  border-color: rgba(0, 0, 0, 0.1) !important;
-  color: #1a1a1a !important;
+  background: var(--secondary) !important;
+  border-color: var(--primary-low-mid) !important;
+  color: var(--primary) !important;
 }
 
 .cooked table th {
-  background: #f0f0f0 !important;
+  background: var(--primary-very-low) !important;
 }
 
 // Código inline en posts
 .cooked code,
 .cooked pre,
 .cooked pre code {
-  background: #f0f0f0 !important;
-  color: #1a1a1a !important;
-  border-color: rgba(0, 0, 0, 0.08) !important;
+  background: var(--primary-very-low) !important;
+  color: var(--primary) !important;
+  border-color: var(--primary-low-mid) !important;
 }
 
 // Tarjeta de usuario (hover)
@@ -945,9 +950,9 @@ aside.quote .title {
 .user-card .card-row,
 .user-card .names,
 .user-card .usercard-controls {
-  background: #ffffff !important;
-  border-color: rgba(0, 0, 0, 0.1) !important;
-  color: #374151 !important;
+  background: var(--secondary) !important;
+  border-color: var(--primary-low-mid) !important;
+  color: var(--primary-high) !important;
 }
 
 // Búsqueda
@@ -957,26 +962,26 @@ aside.quote .title {
 .fps-result:hover,
 .search-menu-container,
 .search-menu .results {
-  background: #ffffff !important;
-  color: #374151 !important;
-  border-color: rgba(0, 0, 0, 0.1) !important;
+  background: var(--secondary) !important;
+  color: var(--primary-high) !important;
+  border-color: var(--primary-low-mid) !important;
 }
 
 .fps-result:hover {
-  background: #f0f0f0 !important;
+  background: var(--primary-very-low) !important;
 }
 
 // Suggested topics (temas sugeridos al final)
 .suggested-topics,
 .suggested-topics .suggested-topics-title {
   background: transparent !important;
-  color: #6b7280 !important;
+  color: var(--primary-medium) !important;
 }
 
 // Timeline del tema
 .topic-timeline .timeline-container,
 .timeline-footer-controls {
-  color: #6b7280 !important;
+  color: var(--primary-medium) !important;
 }
 
 // Onscreen post highlight
@@ -989,36 +994,36 @@ aside.quote .title {
 .poll-container,
 .poll-info,
 .poll-buttons {
-  background: #f5f5f5 !important;
-  border-color: rgba(0, 0, 0, 0.08) !important;
-  color: #374151 !important;
+  background: var(--primary-very-low) !important;
+  border-color: var(--primary-low-mid) !important;
+  color: var(--primary-high) !important;
 }
 
 // Emoji picker
 .emoji-picker,
 .emoji-picker .emoji-picker-emoji-area {
-  background: #ffffff !important;
-  border-color: rgba(0, 0, 0, 0.1) !important;
+  background: var(--secondary) !important;
+  border-color: var(--primary-low-mid) !important;
 }
 
 // Popup menu (más opciones en posts)
 .popup-menu,
 .widget-popup,
 .d-menu-panel {
-  background: #ffffff !important;
-  border-color: rgba(0, 0, 0, 0.1) !important;
-  color: #374151 !important;
+  background: var(--secondary) !important;
+  border-color: var(--primary-low-mid) !important;
+  color: var(--primary-high) !important;
 }
 
 .popup-menu button,
 .widget-popup .btn,
 .d-menu-panel button {
-  color: #374151 !important;
+  color: var(--primary-high) !important;
 }
 
 .popup-menu button:hover,
 .d-menu-panel button:hover {
-  background: #f0f0f0 !important;
+  background: var(--primary-very-low) !important;
   color: #DC2626 !important;
 }
 
@@ -1027,9 +1032,9 @@ aside.quote .title {
 .pika-single,
 .pika-table th,
 .pika-table td {
-  background: #ffffff !important;
-  color: #374151 !important;
-  border-color: rgba(0, 0, 0, 0.08) !important;
+  background: var(--secondary) !important;
+  color: var(--primary-high) !important;
+  border-color: var(--primary-low-mid) !important;
 }
 
 // Preferencias y formularios de admin
@@ -1040,7 +1045,7 @@ aside.quote .title {
 .form-kit__section,
 .form-kit__field {
   background: transparent !important;
-  color: #374151 !important;
+  color: var(--primary-high) !important;
 }
 
 // ── Texto general ─────────────────────────────────────────────────
@@ -1049,5 +1054,5 @@ body, p, li, .cooked, .topic-body .cooked,
 .category-list .category-name,
 .post-stream .topic-body,
 h1, h2, h3, h4 {
-  color: #1a1a1a !important;
+  color: var(--primary) !important;
 }
