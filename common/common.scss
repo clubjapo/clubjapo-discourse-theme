@@ -243,6 +243,16 @@ body.category .navigation-controls,
   z-index: 900;
 }
 
+// El botón vive dentro de ".topic-create-button__combo", que Redditish
+// oculta por completo en escritorio (display:none en el padre colapsa
+// al hijo a 0×0 aunque el propio #create-topic esté en flex).
+body.tags-page .navigation-controls .d-combo-button.topic-create-button__combo,
+body.category .navigation-controls .d-combo-button.topic-create-button__combo,
+.navigation-topics .navigation-controls .d-combo-button.topic-create-button__combo,
+.categories-list .navigation-controls .d-combo-button.topic-create-button__combo {
+  display: flex !important;
+}
+
 body.tags-page .navigation-controls #create-topic,
 body.category .navigation-controls #create-topic,
 .navigation-topics .navigation-controls #create-topic,
