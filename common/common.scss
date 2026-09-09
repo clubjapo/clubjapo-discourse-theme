@@ -513,7 +513,7 @@ a:hover { color: #b91c1c !important; }
 .fancy-title a,
 .topic-title a,
 a.title:not(.btn) {
-  color: var(--primary) !important;
+  color: var(--primary-high) !important;
 }
 
 .topic-list .main-link a:hover,
@@ -529,7 +529,7 @@ a.title:not(.btn):hover {
 // red }" de arriba los pintaba enteros en rojo en vez de solo el título.
 .topic-excerpt,
 .custom-topic-layout_excerpt a {
-  color: var(--primary) !important;
+  color: var(--primary-high) !important;
 }
 
 .topic-excerpt:hover,
@@ -1054,7 +1054,7 @@ body, p, li, .cooked, .topic-body .cooked,
 .category-list .category-name,
 .post-stream .topic-body,
 h1, h2, h3, h4 {
-  color: var(--primary) !important;
+  color: var(--primary-high) !important;
 }
 
 // ── Banner de bienvenida: quitar buscador redundante ──────────────
