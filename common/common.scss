@@ -189,38 +189,37 @@ body:has(#navigation-bar, .custom-right-sidebar, .custom-topic-layout, .custom-p
   }
 }
 
-// ── Reddit-ish: columna central más ancha ──────────────────────────
+// ── Reddit-ish: columna central más ancha y sin sidebar derecho ────
 // Redditish fija el ancho de la columna de contenido en 640px directamente
 // en su rejilla (grid-template-columns), y el componente "Full width" no
-// llega a pisarlo del todo. Lo ampliamos a var(--d-max-width) (el ancho
+// llega a pisarlo del todo. La ampliamos a var(--d-max-width) (el ancho
 // máximo configurado del sitio) para que las imágenes de las tarjetas se
 // vean grandes, igual que en la referencia (p. ej. carptalk-online.co.uk,
-// que usa el mismo tema).
+// que usa el mismo tema). De paso quitamos el bloque "Welcome"/"Recent
+// Topics" del sidebar derecho (en carptalk ese hueco lo ocupa un widget
+// de pago tipo "Top Posts This Month" que no tenemos) y reutilizamos su
+// plantilla de 5 columnas (la misma que Redditish usa en pantallas
+// pequeñas para esconder ese sidebar) en todos los tamaños.
+.custom-right-sidebar {
+  display: none !important;
+}
+
 body.tags-page #main-outlet-wrapper,
 body[class*="navigation-"]:not([class*="archetype-"]) #main-outlet-wrapper,
 body.navigation-category:not([class*="archetype-"]) #main-outlet-wrapper {
-  grid-template-columns:
-    var(--d-sidebar-width) 1fr minmax(0, var(--d-max-width))
-    312px 1fr var(--d-sidebar-width) !important;
+  grid-template-areas:
+    "category-banner category-banner category-banner category-banner category-banner"
+    "sidebar lspace content rspace sidebar-spacer" !important;
+  grid-template-columns: auto 1fr minmax(0, var(--d-max-width)) 1fr auto !important;
 }
 
-@media screen and (width <=1500px) {
-  body.tags-page #main-outlet-wrapper,
-  body[class*="navigation-"]:not([class*="archetype-"]) #main-outlet-wrapper,
-  body.navigation-category:not([class*="archetype-"]) #main-outlet-wrapper {
-    grid-template-columns: auto 1fr minmax(0, var(--d-max-width)) 312px 1fr auto !important;
-  }
-}
-
-@media screen and (width <=1160px) {
-  body.tags-page #main-outlet-wrapper,
-  body[class*="navigation-"]:not([class*="archetype-"]) #main-outlet-wrapper,
-  body.navigation-category:not([class*="archetype-"]) #main-outlet-wrapper,
-  body.has-sidebar-page.tags-page #main-outlet-wrapper,
-  body.has-sidebar-page[class*="navigation-"]:not([class*="archetype-"]) #main-outlet-wrapper,
-  body.has-sidebar-page.navigation-category:not([class*="archetype-"]) #main-outlet-wrapper {
-    grid-template-columns: auto 1fr minmax(0, var(--d-max-width)) 1fr auto !important;
-  }
+body.has-sidebar-page.tags-page #main-outlet-wrapper,
+body.has-sidebar-page[class*="navigation-"]:not([class*="archetype-"]) #main-outlet-wrapper,
+body.has-sidebar-page.navigation-category:not([class*="archetype-"]) #main-outlet-wrapper {
+  grid-template-areas:
+    "sidebar category-banner category-banner category-banner category-banner"
+    "sidebar lspace content rspace sidebar-spacer" !important;
+  grid-template-columns: auto 1fr minmax(0, var(--d-max-width)) 1fr auto !important;
 }
 
 #main-outlet {
