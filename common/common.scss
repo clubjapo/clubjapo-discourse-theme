@@ -376,6 +376,13 @@ input, textarea, select,
 
 // ── Pestañas de navegación — azul → rojo ─────────────────────────
 
+// Pestañas inactivas (Categorías/Recientes/Nuevo/... y similares): la
+// regla global "a { color: red }" de más abajo las pintaba en rojo por
+// error, deben verse neutras y solo la activa en rojo.
+.nav-pills > li > a {
+  color: #374151 !important;
+}
+
 .nav-pills > li.active > a,
 .nav-pills > li > a.active,
 .nav-item.active a,
@@ -409,6 +416,27 @@ a.title:not(.btn) {
 .topic-list .title a:hover,
 .fancy-title a:hover,
 a.title:not(.btn):hover {
+  color: #DC2626 !important;
+}
+
+// Tarjetas de temas del tema "Redditish": el extracto y los metadatos
+// (autor, categoría, fecha) son enlaces también, y la regla "a { color:
+// red }" de arriba los pintaba enteros en rojo en vez de solo el título.
+.topic-excerpt,
+.custom-topic-layout_excerpt a {
+  color: #1a1a1a !important;
+}
+
+.topic-excerpt:hover,
+.custom-topic-layout_excerpt a:hover {
+  color: #DC2626 !important;
+}
+
+.custom-topic-layout_meta a:not(.badge-wrapper) {
+  color: #6b7280 !important;
+}
+
+.custom-topic-layout_meta a:not(.badge-wrapper):hover {
   color: #DC2626 !important;
 }
 
