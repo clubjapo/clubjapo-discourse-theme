@@ -1056,3 +1056,10 @@ body, p, li, .cooked, .topic-body .cooked,
 h1, h2, h3, h4 {
   color: var(--primary) !important;
 }
+
+// ── Banner de bienvenida: quitar buscador redundante ──────────────
+// El header ya tiene su propio icono/caja de búsqueda; el del banner
+// de bienvenida (arriba del listado de temas) es redundante.
+.welcome-banner__search-menu {
+  display: none !important;
+}
