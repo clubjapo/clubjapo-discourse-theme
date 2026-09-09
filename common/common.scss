@@ -222,6 +222,16 @@ body.has-sidebar-page.navigation-category:not([class*="archetype-"]) #main-outle
   grid-template-columns: auto 1fr minmax(0, var(--d-max-width)) 1fr auto !important;
 }
 
+// El botón "Nuevo tema" vivía en el sidebar derecho que acabamos de
+// ocultar. En su lugar queda la barra "Crear un tema" de arriba del
+// listado — pero Redditish la esconde explícitamente en móvil
+// (mobile.scss oculta ".custom-post-bar") y ahí solo deja un botón "+"
+// flotante abajo a la derecha, poco visible. La mostramos también en
+// móvil para tener un único punto claro y consistente en ambos casos.
+.custom-post-bar {
+  display: block !important;
+}
+
 #main-outlet {
   max-width: var(--d-max-width) !important;
 }
