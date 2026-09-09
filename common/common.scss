@@ -406,6 +406,7 @@ a:hover { color: #b91c1c !important; }
 
 .topic-list .main-link a,
 .topic-list .title a,
+.fancy-title,
 .fancy-title a,
 .topic-title a,
 a.title:not(.btn) {
@@ -414,6 +415,7 @@ a.title:not(.btn) {
 
 .topic-list .main-link a:hover,
 .topic-list .title a:hover,
+.fancy-title:hover,
 .fancy-title a:hover,
 a.title:not(.btn):hover {
   color: #DC2626 !important;
