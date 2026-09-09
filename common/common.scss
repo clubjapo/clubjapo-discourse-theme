@@ -378,9 +378,13 @@ input, textarea, select,
 
 // Pestañas inactivas (Categorías/Recientes/Nuevo/... y similares): la
 // regla global "a { color: red }" de más abajo las pintaba en rojo por
-// error, deben verse neutras y solo la activa en rojo.
+// error, deben verse neutras y solo la activa en rojo. El relleno tipo
+// "pastilla" (fondo por pestaña) lo daba una regla core de Discourse
+// (".navigation-container .nav-pills > li > a") que ya no existe en la
+// versión actual del sitio, así que lo replicamos aquí.
 .nav-pills > li > a {
   color: #374151 !important;
+  background: #f5f5f5 !important;
 }
 
 .nav-pills > li.active > a,
@@ -390,6 +394,7 @@ input, textarea, select,
 .user-nav .active a,
 .select-box-kit-row.is-highlighted {
   color: #DC2626 !important;
+  background: rgba(220, 38, 38, 0.1) !important;
   border-bottom-color: #DC2626 !important;
 }
 
