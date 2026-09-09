@@ -78,10 +78,12 @@ input, textarea, select {
   // azulado (#dae0e6) y bordes calculados de la paleta de colores del
   // sitio en Discourse; los forzamos a la paleta actual de ClubJapo
   // para que las tarjetas de temas/categorías no rompan la combinación
-  // de colores existente.
-  --redditish-bg-color:                 #f5f5f5;
-  --redditish-border-color:             rgba(0, 0, 0, 0.08);
-  --redditish-border-highlight-color:   #DC2626;
+  // de colores existente. Necesitan !important: este componente se
+  // carga antes que el tema en la cascada, así que sin !important el
+  // :root del propio tema (cargado después) gana y pisa estos valores.
+  --redditish-bg-color:                 #f5f5f5 !important;
+  --redditish-border-color:             rgba(0, 0, 0, 0.08) !important;
+  --redditish-border-highlight-color:   #DC2626 !important;
 }
 
 // ── ClubJapo Header (se mantiene oscuro) ──────────────────────────
