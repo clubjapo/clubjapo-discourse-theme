@@ -223,13 +223,38 @@ body.has-sidebar-page.navigation-category:not([class*="archetype-"]) #main-outle
 }
 
 // El botón "Nuevo tema" vivía en el sidebar derecho que acabamos de
-// ocultar. En su lugar queda la barra "Crear un tema" de arriba del
-// listado — pero Redditish la esconde explícitamente en móvil
-// (mobile.scss oculta ".custom-post-bar") y ahí solo deja un botón "+"
-// flotante abajo a la derecha, poco visible. La mostramos también en
-// móvil para tener un único punto claro y consistente en ambos casos.
+// ocultar. Redditish usa un patrón distinto según el tamaño: en
+// escritorio muestra la barra "Crear un tema" arriba del listado y
+// esconde el botón flotante; en móvil es al revés. Unificamos en un
+// único patrón —botón flotante "+" abajo a la derecha— en todos los
+// tamaños, y quitamos la barra superior.
 .custom-post-bar {
-  display: block !important;
+  display: none !important;
+}
+
+body.tags-page .navigation-controls,
+body.category .navigation-controls,
+.navigation-topics .navigation-controls,
+.categories-list .navigation-controls {
+  position: fixed !important;
+  top: unset !important;
+  right: 1.25em !important;
+  bottom: 1em !important;
+  z-index: 900;
+}
+
+body.tags-page .navigation-controls #create-topic,
+body.category .navigation-controls #create-topic,
+.navigation-topics .navigation-controls #create-topic,
+.categories-list .navigation-controls #create-topic {
+  display: flex !important;
+  background: var(--tertiary) !important;
+  color: var(--secondary) !important;
+  box-shadow: var(--shadow-card);
+
+  .d-icon {
+    color: var(--secondary);
+  }
 }
 
 #main-outlet {
