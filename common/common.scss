@@ -238,6 +238,21 @@ body.has-sidebar-page.navigation-category:not([class*="archetype-"]) #main-outle
   grid-template-columns: auto 1fr minmax(0, var(--d-max-width)) 1fr auto !important;
 }
 
+// Los hilos individuales (archetype-regular / archetype-private_message,
+// las rutas anteriores los excluían con :not([class*="archetype-"]))
+// se quedaban sin este fix. Su rejilla nativa reserva una TERCERA
+// columna a la derecha (grid-area: sidebar2) para ".custom-right-sidebar"
+// — el sidebar derecho que ya ocultamos con display:none más abajo.
+// display:none no libera esa columna porque está declarada de forma
+// explícita en grid-template-columns (no generada implícitamente por
+// el contenido), así que queda como hueco vacío fijo a la derecha y
+// empuja el contenido hacia la izquierda. La sustituimos por el mismo
+// patrón lspace/rspace simétrico que el resto del sitio.
+body.has-sidebar-page[class*="archetype-"] #main-outlet-wrapper {
+  grid-template-areas: "sidebar lspace content rspace sidebar-spacer" !important;
+  grid-template-columns: auto 1fr minmax(0, var(--d-max-width)) 1fr auto !important;
+}
+
 // El botón "Nuevo tema" vivía en el sidebar derecho que acabamos de
 // ocultar. Redditish usa un patrón distinto según el tamaño: en
 // escritorio muestra la barra "Crear un tema" arriba del listado y
