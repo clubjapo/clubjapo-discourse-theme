@@ -306,46 +306,95 @@ body.category .navigation-controls #create-topic,
   display: none !important;
 }
 
-// El botón "Responder" (#topic-footer-buttons .create) vive dentro de
-// ".topic-footer-main-buttons", que es el PRIMER hijo de
-// "#topic-footer-buttons" (flex-direction:column) — "Vigilar" es el
-// segundo. Sin sacarlo de flujo, ya cae justo encima de "Vigilar" de
-// forma natural, así que en escritorio solo le damos estilo de marca
-// (grande y rojo) y lo dejamos en flujo, para no tapar el menú lateral
-// izquierdo con un position:fixed. En móvil sí lo fijamos abajo a la
-// izquierda: no hay menú lateral que tape y así sigue accesible
-// mientras se hace scroll por el hilo.
+// El CTA nativo "Responder" (#topic-footer-buttons .create) queda
+// oculto siempre: lo sustituimos por dos botones que viven DENTRO de
+// los widgets nativos de Discourse que ya siguen el scroll y se
+// detienen solos al llegar al final del hilo (timeline en escritorio,
+// indicador de progreso en móvil) — así no reimplementamos ese
+// comportamiento a mano con position:fixed.
 #topic-footer-buttons .btn.create.topic-footer-button {
+  display: none !important;
+}
+
+// ── Escritorio: restilizamos el icono nativo de responder de la
+// timeline lateral (".timeline-footer-controls .reply-to-post"), que
+// antes ocultábamos. Vive dentro del mismo widget que hace "dock" con
+// el scroll (topic-timeline.scss de Discourse core), así que se mueve
+// solidario con la lectura y se detiene solo al llegar al final del
+// hilo. Lo ensanchamos a todo el ancho de la columna (angosta, ~126px)
+// y le añadimos la etiqueta "Responder" por ::after (el botón nativo
+// es icon-only, sin <span> de texto en el DOM).
+.timeline-footer-controls .btn.create.reply-to-post {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3em;
+  width: 100%;
+  box-sizing: border-box;
+  order: 1; // debajo de la campana de notificaciones (order:0 por defecto)
+  margin-top: 0.4em;
   background: var(--tertiary) !important;
-  color: var(--secondary) !important;
   border-color: var(--tertiary) !important;
-  box-shadow: var(--shadow-card);
+  color: var(--secondary) !important;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.45em 0.3em !important;
 
   .d-icon {
     color: var(--secondary) !important;
   }
+
+  &::after {
+    content: "Responder";
+    white-space: nowrap;
+  }
 }
 
-html.mobile-view #topic-footer-buttons .btn.create.topic-footer-button {
-  position: fixed !important;
-  left: 1.25em !important;
-  right: auto !important;
-  bottom: 1em !important;
-  z-index: 900;
+// ── Móvil: el indicador de progreso (#topic-progress-wrapper, con la
+// llave inglesa y el marcador "3/12") no trae de fábrica ningún botón
+// de responder — lo añadimos vía el plugin outlet "after-topic-progress"
+// (ver javascripts/discourse/connectors/after-topic-progress/), que
+// Discourse ya renderiza DENTRO de ese mismo wrapper. Al vivir ahí
+// dentro, hereda gratis el position:sticky que hace que se mueva con
+// el scroll y se detenga exactamente al llegar a "Temas nuevos y no
+// leídos", sin JS propio de scroll.
+//
+// El wrapper es flex en fila (llave inglesa, marcador, y ahora nuestro
+// botón, en ese orden de DOM). Lo pasamos a columna y le damos un
+// order alto al marcador de progreso para que quede el último (abajo
+// del todo): llave inglesa arriba, nuestro botón en medio, marcador
+// abajo — "justo encima" del 3/12 tal como se pidió.
+#topic-progress-wrapper {
+  flex-direction: column !important;
+  align-items: flex-end !important;
 }
 
-// Mientras el editor de respuesta está abierto, ocultamos el flotante
-// de móvil: se solaparía con el propio composer. OJO: Discourse pone
-// la clase "composer-open" en <html>, no en <body>.
-html.mobile-view.composer-open #topic-footer-buttons .btn.create.topic-footer-button {
-  display: none !important;
+#topic-progress-wrapper #topic-progress {
+  order: 5 !important;
 }
 
-// La timeline lateral de escritorio ya tenía su propio icono de
-// responder (pequeño, negro, sin texto) en ".timeline-footer-controls".
-// Con el botón grande de arriba es una acción duplicada, así que lo
-// ocultamos.
-.timeline-footer-controls .btn.create.reply-to-post {
+.clubjapo-mobile-quick-reply {
+  display: flex !important;
+  align-items: center;
+  gap: 0.3em;
+  width: fit-content;
+  background: var(--tertiary) !important;
+  border-color: var(--tertiary) !important;
+  color: var(--secondary) !important;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.4em 0.6em !important;
+  white-space: nowrap;
+
+  svg {
+    fill: var(--secondary) !important;
+  }
+}
+
+// Mientras el editor de respuesta está abierto, lo ocultamos: se
+// solaparía con el propio composer. OJO: Discourse pone la clase
+// "composer-open" en <html>, no en <body>.
+html.composer-open .clubjapo-mobile-quick-reply {
   display: none !important;
 }
 

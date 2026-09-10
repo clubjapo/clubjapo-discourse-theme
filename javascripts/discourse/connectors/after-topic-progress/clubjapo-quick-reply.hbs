@@ -1,0 +1,11 @@
+{{! Botón "Responder" para el indicador de progreso móvil (#topic-progress-wrapper). }}
+{{! Reutiliza el click del CTA nativo (oculto) en vez de reimplementar la apertura del editor. }}
+<button
+  type="button"
+  class="btn clubjapo-mobile-quick-reply"
+  title="Responder"
+  onclick="document.querySelector('#topic-footer-buttons .btn.create.topic-footer-button')?.click();"
+>
+  <svg class="fa d-icon d-icon-reply svg-icon" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"><use href="#reply"></use></svg>
+  <span>Responder</span>
+</button>
