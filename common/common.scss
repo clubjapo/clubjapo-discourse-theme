@@ -306,18 +306,16 @@ body.category .navigation-controls #create-topic,
   display: none !important;
 }
 
-// El botón "Responder" (#topic-footer-buttons .create) vive de forma
-// estática tras el último post del hilo, así que solo se vería si el
-// usuario llega hasta el final. Lo convertimos en flotante persistente,
-// a juego con el botón "+" de /latest, pero abajo a la IZQUIERDA para
-// no chocar con el indicador de progreso del tema (abajo a la derecha,
-// ver fix de contraste más abajo).
+// El botón "Responder" (#topic-footer-buttons .create) vive dentro de
+// ".topic-footer-main-buttons", que es el PRIMER hijo de
+// "#topic-footer-buttons" (flex-direction:column) — "Vigilar" es el
+// segundo. Sin sacarlo de flujo, ya cae justo encima de "Vigilar" de
+// forma natural, así que en escritorio solo le damos estilo de marca
+// (grande y rojo) y lo dejamos en flujo, para no tapar el menú lateral
+// izquierdo con un position:fixed. En móvil sí lo fijamos abajo a la
+// izquierda: no hay menú lateral que tape y así sigue accesible
+// mientras se hace scroll por el hilo.
 #topic-footer-buttons .btn.create.topic-footer-button {
-  position: fixed !important;
-  left: 1.25em !important;
-  right: auto !important;
-  bottom: 1em !important;
-  z-index: 900;
   background: var(--tertiary) !important;
   color: var(--secondary) !important;
   border-color: var(--tertiary) !important;
@@ -328,10 +326,26 @@ body.category .navigation-controls #create-topic,
   }
 }
 
-// Mientras el editor de respuesta está abierto, ocultamos el flotante:
-// se solaparía con el propio composer. OJO: Discourse pone la clase
-// "composer-open" en <html>, no en <body>.
-html.composer-open #topic-footer-buttons .btn.create.topic-footer-button {
+html.mobile-view #topic-footer-buttons .btn.create.topic-footer-button {
+  position: fixed !important;
+  left: 1.25em !important;
+  right: auto !important;
+  bottom: 1em !important;
+  z-index: 900;
+}
+
+// Mientras el editor de respuesta está abierto, ocultamos el flotante
+// de móvil: se solaparía con el propio composer. OJO: Discourse pone
+// la clase "composer-open" en <html>, no en <body>.
+html.mobile-view.composer-open #topic-footer-buttons .btn.create.topic-footer-button {
+  display: none !important;
+}
+
+// La timeline lateral de escritorio ya tenía su propio icono de
+// responder (pequeño, negro, sin texto) en ".timeline-footer-controls".
+// Con el botón grande de arriba es una acción duplicada, así que lo
+// ocultamos.
+.timeline-footer-controls .btn.create.reply-to-post {
   display: none !important;
 }
 
