@@ -1129,8 +1129,17 @@ aside.quote .title {
 // banner rojo bien visible para marcar claramente dónde acaba el hilo
 // y empiezan los temas sugeridos — se confundía con el propio
 // contenido del hilo.
-.more-topics__list-title {
-  display: block !important;
+//
+// IMPORTANTE — Discourse (more-topics.scss) solo pinta este título
+// cuando hay una única lista de sugerencias ("single-list"); si el
+// tema tiene varias (p. ej. "Nuevos" + "Relacionados") lo oculta a
+// propósito y en su lugar muestra pestañas arriba
+// (".more-topics__lists:not(.single-list) .more-topics__list-title {
+// display: none }"). Si forzamos display:block siempre, ese título
+// sale igualmente en el caso multi-lista, pequeño y descolocado
+// (Discourse no lo diseñó para verse ahí). Por eso escopamos a
+// ".single-list" en vez de tocar TODOS los ".more-topics__list-title".
+.more-topics__lists.single-list .more-topics__list-title {
   background: var(--tertiary) !important;
   color: #fff !important;
   font-size: 1.3rem !important;
