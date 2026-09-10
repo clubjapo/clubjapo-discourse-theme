@@ -283,6 +283,34 @@ body.category .navigation-controls #create-topic,
   }
 }
 
+// El botón "Responder" (#topic-footer-buttons .create) vive de forma
+// estática tras el último post del hilo, así que solo se ve si el
+// usuario llega hasta el final. Lo convertimos en flotante persistente,
+// a juego con el botón "+" de /latest, pero abajo a la IZQUIERDA para
+// no chocar con el indicador de progreso del tema (abajo a la derecha,
+// ver fix de contraste más abajo).
+#topic-footer-buttons .btn.create.topic-footer-button {
+  position: fixed !important;
+  left: 1.25em !important;
+  right: auto !important;
+  bottom: 1em !important;
+  z-index: 900;
+  background: var(--tertiary) !important;
+  color: var(--secondary) !important;
+  border-color: var(--tertiary) !important;
+  box-shadow: var(--shadow-card);
+
+  .d-icon {
+    color: var(--secondary) !important;
+  }
+}
+
+// Mientras el editor de respuesta está abierto, ocultamos el flotante:
+// se solaparía con el propio composer.
+body.composer-open #topic-footer-buttons .btn.create.topic-footer-button {
+  display: none !important;
+}
+
 #main-outlet {
   max-width: var(--d-max-width) !important;
 }
@@ -989,6 +1017,29 @@ aside.quote .title {
 .topic-timeline .timeline-container,
 .timeline-footer-controls {
   color: var(--primary-medium) !important;
+}
+
+// Indicador de progreso del tema en móvil (#topic-progress-wrapper,
+// visible abajo a la derecha mientras se lee un hilo). Por defecto
+// Discourse pinta el texto ("3 / 12") en var(--tertiary) —rojo— sobre
+// un relleno de progreso (.bg) también rojizo (var(--tertiary-low))
+// que va cubriendo el botón según se avanza en la lectura: cuando el
+// relleno llega casi al 100% queda texto rojo sobre fondo rojo,
+// ilegible (efecto "mancha marrón"). Lo unificamos con el resto de
+// botones flotantes de la marca: fondo rojo sólido y texto blanco,
+// siempre legibles independientemente del progreso de lectura.
+#topic-progress-wrapper #topic-progress {
+  background: var(--tertiary) !important;
+  color: var(--secondary) !important;
+  border-color: var(--tertiary) !important;
+
+  .bg {
+    background-color: rgba(255, 255, 255, 0.18) !important;
+  }
+
+  .d-icon {
+    color: var(--secondary) !important;
+  }
 }
 
 // Onscreen post highlight
