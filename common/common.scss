@@ -287,6 +287,13 @@ body.category .navigation-controls #create-topic,
   max-width: var(--d-max-width) !important;
 }
 
+// La vista de categorías hereda de Redditish un `grid-column-end` que no
+// coincide con la cuadrícula de navegación de ClubJapo. Restauramos el área
+// `content` para que se alinee exactamente igual que /latest.
+.navigation-categories #main-outlet-wrapper #main-outlet {
+  grid-column-end: content !important;
+}
+
 // ── Sidebar (nuevo Discourse sidebar) ────────────────────────────
 
 .sidebar-wrapper,
