@@ -1149,6 +1149,21 @@ aside.quote .title {
   margin: 1.5em 0 1em !important;
 }
 
+// Redditish ya oculta la cabecera de la tabla de "temas sugeridos"
+// ("Tema | Respuestas | Vistas | Actividad") en escritorio con
+// ".topic-list-header { display: none }" (sin !important). Pero
+// Discourse core trae una regla propia MÁS ESPECÍFICA que solo se
+// activa en pantallas estrechas
+// (".topic-list-header.--has-tabs { display: flex }", dentro de un
+// @media hasta "sm"), que en móvil le gana a la de Redditish y vuelve
+// a sacar esa cabecera reducida a un renglón estrecho con solo la
+// palabra "Tema" (el resto de columnas se ocultan). Lo igualamos con
+// !important para que quede oculta también en móvil, igual que en
+// escritorio.
+.more-topics__list .topic-list-header {
+  display: none !important;
+}
+
 // Timeline del tema
 .topic-timeline .timeline-container,
 .timeline-footer-controls {
