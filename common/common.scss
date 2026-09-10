@@ -275,11 +275,14 @@ body.category .navigation-controls #create-topic,
 .categories-list .navigation-controls #create-topic {
   display: flex !important;
   background: var(--tertiary) !important;
-  color: var(--secondary) !important;
+  // Texto blanco fijo, no var(--secondary): en la paleta oscura esa
+  // variable es un tono oscuro (fondo de página), quedaría oscuro
+  // sobre rojo (mismo bug que en el resto de botones rojos).
+  color: #fff !important;
   box-shadow: var(--shadow-card);
 
   .d-icon {
-    color: var(--secondary);
+    color: #fff;
   }
 }
 
@@ -335,13 +338,16 @@ body.category .navigation-controls #create-topic,
   margin-top: 0.4em;
   background: var(--tertiary) !important;
   border-color: var(--tertiary) !important;
-  color: var(--secondary) !important;
+  // Texto blanco fijo, no var(--secondary): en la paleta oscura esa
+  // variable es un tono oscuro (fondo de página), quedaría oscuro
+  // sobre rojo.
+  color: #fff !important;
   font-size: 0.7rem;
   font-weight: 600;
   padding: 0.45em 0.3em !important;
 
   .d-icon {
-    color: var(--secondary) !important;
+    color: #fff !important;
   }
 
   &::after {
@@ -367,27 +373,50 @@ body.category .navigation-controls #create-topic,
 #topic-progress-wrapper {
   flex-direction: column !important;
   align-items: flex-end !important;
+  gap: 0.4em;
 }
 
+// Mismo tamaño/forma/color que nuestro botón "Responder": píldora
+// totalmente redondeada, en el rojo intenso de marca. var(--secondary)
+// para el texto NO sirve aquí: en la paleta oscura esa variable es un
+// tono oscuro (el fondo de página), así que el texto quedaba oscuro
+// sobre rojo, apenas legible — usamos blanco fijo. El relleno de
+// progreso (.bg, un blanco translúcido que iba cubriendo el botón
+// según avanzaba la lectura) también se quita: pasado cierto punto
+// dejaba el rojo deslavado en vez de intenso.
 #topic-progress-wrapper #topic-progress {
   order: 5 !important;
+  background: var(--tertiary) !important;
+  color: #fff !important;
+  border-color: var(--tertiary) !important;
+  border-radius: 999px !important;
+
+  .bg {
+    display: none !important;
+  }
+
+  .d-icon {
+    color: #fff !important;
+  }
 }
 
 .clubjapo-mobile-quick-reply {
   display: flex !important;
   align-items: center;
+  justify-content: center;
   gap: 0.3em;
   width: fit-content;
   background: var(--tertiary) !important;
-  border-color: var(--tertiary) !important;
-  color: var(--secondary) !important;
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 0.4em 0.6em !important;
+  border: none !important;
+  border-radius: 999px !important;
+  color: #fff !important;
+  font-size: var(--font-up-1);
+  font-weight: bold;
+  padding: 0.5rem 1em !important; // mismo padding que #topic-progress (core Discourse)
   white-space: nowrap;
 
   svg {
-    fill: var(--secondary) !important;
+    fill: #fff !important;
   }
 }
 
@@ -1104,29 +1133,6 @@ aside.quote .title {
 .topic-timeline .timeline-container,
 .timeline-footer-controls {
   color: var(--primary-medium) !important;
-}
-
-// Indicador de progreso del tema en móvil (#topic-progress-wrapper,
-// visible abajo a la derecha mientras se lee un hilo). Por defecto
-// Discourse pinta el texto ("3 / 12") en var(--tertiary) —rojo— sobre
-// un relleno de progreso (.bg) también rojizo (var(--tertiary-low))
-// que va cubriendo el botón según se avanza en la lectura: cuando el
-// relleno llega casi al 100% queda texto rojo sobre fondo rojo,
-// ilegible (efecto "mancha marrón"). Lo unificamos con el resto de
-// botones flotantes de la marca: fondo rojo sólido y texto blanco,
-// siempre legibles independientemente del progreso de lectura.
-#topic-progress-wrapper #topic-progress {
-  background: var(--tertiary) !important;
-  color: var(--secondary) !important;
-  border-color: var(--tertiary) !important;
-
-  .bg {
-    background-color: rgba(255, 255, 255, 0.18) !important;
-  }
-
-  .d-icon {
-    color: var(--secondary) !important;
-  }
 }
 
 // Onscreen post highlight
