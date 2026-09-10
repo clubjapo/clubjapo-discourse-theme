@@ -283,8 +283,31 @@ body.category .navigation-controls #create-topic,
   }
 }
 
+// Redditish oculta por completo ".topic-footer-main-buttons" (el
+// contenedor real del CTA "Responder" y de los botones secundarios:
+// llave inglesa, compartir, marcador, denunciar, marcar no leído) con
+// display:none, en todos los tamaños de pantalla — no es un tema de
+// scroll ni de breakpoint, el botón "Responder" nunca llega a
+// renderizarse, así que no hay forma de pulsarlo ni en PC ni en móvil.
+// Redditish asume que esas acciones viven en la timeline lateral, pero
+// esa timeline lateral solo existe en escritorio ancho (>924px); el
+// resto de tamaños se quedan sin ningún botón de respuesta.
+//
+// Reactivamos el contenedor con display:contents (no pinta caja
+// propia, solo dejar pasar a sus hijos) para poder mostrar el botón
+// "Responder" como flotante. Los botones secundarios siguen ocultos:
+// ya están accesibles vía la llave inglesa / el menú "..." de cada
+// post, y no queremos llenar la pantalla de botones sueltos.
+#topic-footer-buttons .topic-footer-main-buttons {
+  display: contents !important;
+}
+
+#topic-footer-buttons .topic-footer-main-buttons__actions {
+  display: none !important;
+}
+
 // El botón "Responder" (#topic-footer-buttons .create) vive de forma
-// estática tras el último post del hilo, así que solo se ve si el
+// estática tras el último post del hilo, así que solo se vería si el
 // usuario llega hasta el final. Lo convertimos en flotante persistente,
 // a juego con el botón "+" de /latest, pero abajo a la IZQUIERDA para
 // no chocar con el indicador de progreso del tema (abajo a la derecha,
@@ -306,8 +329,9 @@ body.category .navigation-controls #create-topic,
 }
 
 // Mientras el editor de respuesta está abierto, ocultamos el flotante:
-// se solaparía con el propio composer.
-body.composer-open #topic-footer-buttons .btn.create.topic-footer-button {
+// se solaparía con el propio composer. OJO: Discourse pone la clase
+// "composer-open" en <html>, no en <body>.
+html.composer-open #topic-footer-buttons .btn.create.topic-footer-button {
   display: none !important;
 }
 
