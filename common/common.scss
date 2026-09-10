@@ -1122,11 +1122,22 @@ aside.quote .title {
   background: var(--primary-very-low) !important;
 }
 
-// Suggested topics (temas sugeridos al final)
-.suggested-topics,
-.suggested-topics .suggested-topics-title {
-  background: transparent !important;
-  color: var(--primary-medium) !important;
+// "Temas nuevos y no leídos" (o variantes: "Temas relacionados", etc.)
+// al final del hilo (antes ".suggested-topics .suggested-topics-title",
+// clases que Discourse ya no usa — ahora es ".more-topics__list-title";
+// la regla vieja no llegaba a aplicar a nada). Lo convertimos en un
+// banner rojo bien visible para marcar claramente dónde acaba el hilo
+// y empiezan los temas sugeridos — se confundía con el propio
+// contenido del hilo.
+.more-topics__list-title {
+  display: block !important;
+  background: var(--tertiary) !important;
+  color: #fff !important;
+  font-size: 1.3rem !important;
+  font-weight: 700 !important;
+  padding: 0.6em 1em !important;
+  border-radius: 8px !important;
+  margin: 1.5em 0 1em !important;
 }
 
 // Timeline del tema
