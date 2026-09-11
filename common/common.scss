@@ -253,6 +253,33 @@ body.has-sidebar-page[class*="archetype-"] #main-outlet-wrapper {
   grid-template-columns: auto 1fr minmax(0, var(--d-max-width)) 1fr auto !important;
 }
 
+// Aviso "Pon tu anuncio aquí" para la categoría Compra-venta de
+// vehículos (javascripts/discourse/connectors/discovery-above/). Ese
+// outlet se renderiza en TODAS las páginas de listado (latest,
+// categorías, tags...), así que el conector siempre pinta el div —
+// aquí lo ocultamos por defecto y solo lo mostramos cuando el body
+// trae la clase de esta categoría en concreto.
+.clubjapo-compraventa-banner {
+  display: none;
+}
+
+body.category-compraventa-vehiculos .clubjapo-compraventa-banner {
+  display: block;
+  background: var(--tertiary);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 0.8em 1em;
+  border-radius: 8px;
+  margin-bottom: 1em;
+
+  a {
+    color: #fff;
+    text-decoration: underline;
+  }
+}
+
 // El botón "Nuevo tema" vivía en el sidebar derecho que acabamos de
 // ocultar. Redditish usa un patrón distinto según el tamaño: en
 // escritorio muestra la barra "Crear un tema" arriba del listado y
