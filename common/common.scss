@@ -275,7 +275,10 @@ body.category-compraventa-vehiculos .clubjapo-compraventa-banner {
   margin-bottom: 1em;
 
   a {
-    color: #fff;
+    // !important: el tema ya trae "a { color: #DC2626 !important; }"
+    // global, que ganaría sobre este selector más específico pero
+    // sin !important.
+    color: #fff !important;
     text-decoration: underline;
   }
 }
