@@ -273,6 +273,11 @@ body.category-compraventa-vehiculos .clubjapo-compraventa-banner {
   padding: 0.8em 1em;
   border-radius: 8px;
   margin-bottom: 1em;
+  box-sizing: border-box;
+  // La URL es una sola "palabra" larga sin espacios: en pantallas
+  // estrechas (móvil) no tenía dónde partirse y se salía de la caja
+  // por la derecha, cortada por el borde de la pantalla.
+  overflow-wrap: anywhere;
 
   a {
     // !important: el tema ya trae "a { color: #DC2626 !important; }"
