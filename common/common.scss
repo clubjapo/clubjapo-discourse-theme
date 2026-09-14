@@ -169,6 +169,28 @@ input, textarea, select {
 .d-header .d-header-icons svg { fill: #d1d5db !important; }
 .d-header .d-header-icons .icon:hover svg { fill: #DC2626 !important; }
 
+// Discourse coloca ".before-header-panel-outlet" (nuestros enlaces de
+// nav) y ".title-wrapper" (el título del hilo, que aparece "acoplado"
+// en la cabecera al hacer scroll dentro de un tema) en la MISMA
+// grid-area de ".d-header .contents" ("extra-info"). Sin esto, el
+// título ocupa el ancho completo de esa columna y se solapa con los
+// enlaces cuando es largo. Le reservamos el hueco fijo de los enlaces
+// y truncamos con ellipsis en vez de dejar que el texto invada su
+// espacio (y su área de click).
+.d-header .title-wrapper {
+  max-width: calc(100% - 500px) !important;
+  overflow: hidden !important;
+}
+
+.d-header .title-wrapper .header-title,
+.d-header .title-wrapper .topic-link {
+  display: block !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
 // ── Fondo global del foro ────────────────────────────────────────
 
 html, body,
