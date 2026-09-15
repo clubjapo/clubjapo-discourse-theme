@@ -238,41 +238,53 @@ body:has(#navigation-bar, .custom-right-sidebar, .custom-topic-layout, .custom-p
 // de pago tipo "Top Posts This Month" que no tenemos) y reutilizamos su
 // plantilla de 5 columnas (la misma que Redditish usa en pantallas
 // pequeñas para esconder ese sidebar) en todos los tamaños.
-.custom-right-sidebar {
-  display: none !important;
-}
+// Todo este bloque asume la rejilla propia de Redditish (nombres de
+// grid-area "sidebar/lspace/content/rspace/sidebar-spacer", columna
+// central fija en 640px). Este componente se aplica también a otros
+// temas (Foundation, Horizon, Anuncios), cuyo #main-outlet-wrapper NO
+// tiene esa rejilla — forzarla ahí igualmente rompía la maquetación
+// vertical de rutas concretas (ej. "/new" con pocos temas se veía con
+// un hueco enorme antes de la lista, al forzar aquí un
+// grid-template-areas que no coincide con el que Foundation espera).
+// Lo detectamos igual que el resto del archivo (marcado propio de
+// Redditish, vía :has()) para que sea un no-op en cualquier otro tema.
+body:has(#navigation-bar, .custom-right-sidebar, .custom-topic-layout, .custom-post-bar-contents) {
+  .custom-right-sidebar {
+    display: none !important;
+  }
 
-body.tags-page #main-outlet-wrapper,
-body[class*="navigation-"]:not([class*="archetype-"]) #main-outlet-wrapper,
-body.navigation-category:not([class*="archetype-"]) #main-outlet-wrapper {
-  grid-template-areas:
-    "category-banner category-banner category-banner category-banner category-banner"
-    "sidebar lspace content rspace sidebar-spacer" !important;
-  grid-template-columns: auto 1fr minmax(0, var(--d-max-width)) 1fr auto !important;
-}
+  &.tags-page #main-outlet-wrapper,
+  &[class*="navigation-"]:not([class*="archetype-"]) #main-outlet-wrapper,
+  &.navigation-category:not([class*="archetype-"]) #main-outlet-wrapper {
+    grid-template-areas:
+      "category-banner category-banner category-banner category-banner category-banner"
+      "sidebar lspace content rspace sidebar-spacer" !important;
+    grid-template-columns: auto 1fr minmax(0, var(--d-max-width)) 1fr auto !important;
+  }
 
-body.has-sidebar-page.tags-page #main-outlet-wrapper,
-body.has-sidebar-page[class*="navigation-"]:not([class*="archetype-"]) #main-outlet-wrapper,
-body.has-sidebar-page.navigation-category:not([class*="archetype-"]) #main-outlet-wrapper {
-  grid-template-areas:
-    "sidebar category-banner category-banner category-banner category-banner"
-    "sidebar lspace content rspace sidebar-spacer" !important;
-  grid-template-columns: auto 1fr minmax(0, var(--d-max-width)) 1fr auto !important;
-}
+  &.has-sidebar-page.tags-page #main-outlet-wrapper,
+  &.has-sidebar-page[class*="navigation-"]:not([class*="archetype-"]) #main-outlet-wrapper,
+  &.has-sidebar-page.navigation-category:not([class*="archetype-"]) #main-outlet-wrapper {
+    grid-template-areas:
+      "sidebar category-banner category-banner category-banner category-banner"
+      "sidebar lspace content rspace sidebar-spacer" !important;
+    grid-template-columns: auto 1fr minmax(0, var(--d-max-width)) 1fr auto !important;
+  }
 
-// Los hilos individuales (archetype-regular / archetype-private_message,
-// las rutas anteriores los excluían con :not([class*="archetype-"]))
-// se quedaban sin este fix. Su rejilla nativa reserva una TERCERA
-// columna a la derecha (grid-area: sidebar2) para ".custom-right-sidebar"
-// — el sidebar derecho que ya ocultamos con display:none más abajo.
-// display:none no libera esa columna porque está declarada de forma
-// explícita en grid-template-columns (no generada implícitamente por
-// el contenido), así que queda como hueco vacío fijo a la derecha y
-// empuja el contenido hacia la izquierda. La sustituimos por el mismo
-// patrón lspace/rspace simétrico que el resto del sitio.
-body.has-sidebar-page[class*="archetype-"] #main-outlet-wrapper {
-  grid-template-areas: "sidebar lspace content rspace sidebar-spacer" !important;
-  grid-template-columns: auto 1fr minmax(0, var(--d-max-width)) 1fr auto !important;
+  // Los hilos individuales (archetype-regular / archetype-private_message,
+  // las rutas anteriores los excluían con :not([class*="archetype-"]))
+  // se quedaban sin este fix. Su rejilla nativa reserva una TERCERA
+  // columna a la derecha (grid-area: sidebar2) para ".custom-right-sidebar"
+  // — el sidebar derecho que ya ocultamos con display:none más arriba.
+  // display:none no libera esa columna porque está declarada de forma
+  // explícita en grid-template-columns (no generada implícitamente por
+  // el contenido), así que queda como hueco vacío fijo a la derecha y
+  // empuja el contenido hacia la izquierda. La sustituimos por el mismo
+  // patrón lspace/rspace simétrico que el resto del sitio.
+  &.has-sidebar-page[class*="archetype-"] #main-outlet-wrapper {
+    grid-template-areas: "sidebar lspace content rspace sidebar-spacer" !important;
+    grid-template-columns: auto 1fr minmax(0, var(--d-max-width)) 1fr auto !important;
+  }
 }
 
 // Aviso "Pon tu anuncio aquí" para la categoría Compra-venta de
@@ -506,7 +518,9 @@ html.composer-open .clubjapo-mobile-quick-reply {
 // La vista de categorías hereda de Redditish un `grid-column-end` que no
 // coincide con la cuadrícula de navegación de ClubJapo. Restauramos el área
 // `content` para que se alinee exactamente igual que /latest.
-.navigation-categories #main-outlet-wrapper #main-outlet {
+// Igual que el bloque de arriba, es un parche específico de la rejilla de
+// Redditish — lo guardamos igual para que no toque el grid de otros temas.
+body:has(#navigation-bar, .custom-right-sidebar, .custom-topic-layout, .custom-post-bar-contents).navigation-categories #main-outlet-wrapper #main-outlet {
   grid-column-end: content !important;
 }
 
