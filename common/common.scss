@@ -104,8 +104,8 @@ input, textarea, select {
 // ── ClubJapo Header (se mantiene oscuro en claro y en oscuro) ──────
 
 .d-header {
-  height: 126px !important;
-  min-height: 126px !important;
+  height: 144px !important;
+  min-height: 144px !important;
   box-sizing: border-box !important;
   background: #0a0a0a !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -136,8 +136,8 @@ input, textarea, select {
 // Logo sin bordes (mismo que clubjapo.com), subido como asset del tema.
 #site-logo {
   content: url($clubjapo-logo) !important;
-  height: 110px !important;
-  width: 110px !important;
+  height: 124px !important;
+  width: 124px !important;
   max-height: none !important;
   object-fit: contain !important;
 }
