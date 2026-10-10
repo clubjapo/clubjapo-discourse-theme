@@ -208,6 +208,101 @@ input, textarea, select {
   white-space: nowrap !important;
 }
 
+// ── Cabecera de escritorio alineada con la landing ───────────────
+// Mismo contenedor que landing/src/Header.tsx (max-w 96rem + px-10 de
+// Tailwind = 1536px y 40px). Se usan px, no rem: la raíz de Discourse
+// no es 16px. El buscador de cabecera vive DENTRO de
+// .before-header-panel-outlet junto a los enlaces del componente
+// ClubJapo Mobile Navigation, por eso el outlet pasa a "display:
+// contents" para que logo, enlaces, buscador e iconos sean una sola fila.
+@media (min-width: 768px) {
+  .d-header > .wrap { padding-inline: 0 !important; }
+
+  .d-header .contents {
+    position: static !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 32px !important;
+    box-sizing: border-box !important;
+    max-width: 1536px !important;
+    margin-inline: auto !important;
+    padding-inline: 40px !important;
+  }
+
+  // La hamburguesa queda en el borde izquierdo de la ventana, fuera del
+  // contenedor, para que el logo coincida con el de la landing.
+  .d-header .header-sidebar-toggle {
+    position: absolute !important;
+    left: 12px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: auto !important;
+    margin: 0 !important;
+  }
+
+  .d-header .home-logo-wrapper-outlet,
+  .d-header .home-logo-wrapper-outlet .title {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: auto !important;
+    flex: 0 0 auto !important;
+  }
+
+  .d-header .before-header-panel-outlet { display: contents !important; }
+
+  .d-header .clubjapo-desktop-navigation {
+    order: 1;
+    gap: 32px !important;
+    margin-left: auto !important;
+  }
+
+  .d-header .floating-search-input-wrapper {
+    order: 2;
+    flex: 0 1 260px !important;
+    min-width: 0 !important;
+  }
+
+  .d-header .panel {
+    order: 3;
+    margin-left: 0 !important;
+  }
+
+  .d-header .clubjapo-desktop-navigation .clubjapo-desktop-navigation__link,
+  .d-header .clubjapo-desktop-navigation .clubjapo-desktop-navigation-trigger {
+    color: #f5f5f5 !important;
+    padding: 0 !important;
+    gap: 6px !important;
+    flex-direction: row-reverse !important;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+  }
+
+  .d-header .clubjapo-desktop-navigation .clubjapo-desktop-navigation__link:hover,
+  .d-header .clubjapo-desktop-navigation .clubjapo-desktop-navigation-trigger:hover,
+  .d-header .clubjapo-desktop-navigation .clubjapo-desktop-navigation-trigger[aria-expanded="true"] {
+    color: #DC2626 !important;
+  }
+
+  .d-header .clubjapo-desktop-navigation .d-icon {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  // El título del hilo acoplado ya no comparte celda con los enlaces
+  // (están en la misma fila flex): ocupa el hueco libre y se trunca.
+  .d-header .extra-info-wrapper {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+  }
+
+  .d-header .extra-info-wrapper .title-wrapper { max-width: 100% !important; }
+
+  // Tablet en vista móvil de Discourse: sin enlaces ni buscador de
+  // cabecera, los iconos van a la derecha.
+  .mobile-view .d-header .panel { margin-left: auto !important; }
+}
+
 // ── Fondo global del foro ────────────────────────────────────────
 
 html, body,
