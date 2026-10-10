@@ -104,7 +104,9 @@ input, textarea, select {
 // ── ClubJapo Header (se mantiene oscuro en claro y en oscuro) ──────
 
 .d-header {
-  height: 160px !important;
+  height: 126px !important;
+  min-height: 126px !important;
+  box-sizing: border-box !important;
   background: #0a0a0a !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
   box-shadow: none !important;
@@ -131,11 +133,26 @@ input, textarea, select {
   background-color: transparent !important;
 }
 
+// Logo sin bordes (mismo que clubjapo.com), subido como asset del tema.
 #site-logo {
-  height: 112px !important;
-  width: auto !important;
+  content: url($clubjapo-logo) !important;
+  height: 110px !important;
+  width: 110px !important;
   max-height: none !important;
   object-fit: contain !important;
+}
+
+// Móvil: cabecera compacta.
+@media (max-width: 767px) {
+  .d-header {
+    height: 64px !important;
+    min-height: 64px !important;
+  }
+
+  #site-logo {
+    height: 48px !important;
+    width: 48px !important;
+  }
 }
 
 // ── Nav links header ─────────────────────────────────────────────

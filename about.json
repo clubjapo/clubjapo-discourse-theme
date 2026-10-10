@@ -2,5 +2,8 @@
   "name": "ClubJapo Theme Component",
   "about_url": "https://clubjapo.com",
   "license_url": null,
-  "component": true
+  "component": true,
+  "assets": {
+    "clubjapo-logo": "assets/clubjapo-logo.png"
+  }
 }
